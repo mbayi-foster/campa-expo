@@ -1,0 +1,15 @@
+{
+  "name": "campa-expo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CAMPAEXPO RDC - Plateforme Nationale de l'Entrepreneuriat Étudiant",
+  "scripts": {
+    "css:build": "tailwindcss -i static/css/style.css -o static/css/output-style.css --minify",
+    "css:dev": "tailwindcss -i static/css/style.css -o static/css/output-style.css",
+    "css:watch": "tailwindcss -i static/css/style.css -o static/css/output-style.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

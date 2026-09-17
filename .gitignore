@@ -1,0 +1,118 @@
+# ========================================================
+#  .gitignore — projet Flask (campa-expo)
+# ========================================================
+
+# ---------- Environnements virtuels Python ----------
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# ---------- Bytecode / cache Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyo
+
+# ---------- Outils de build / packaging ----------
+build/
+dist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ---------- Tests & couverture ----------
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+htmlcov/
+.tox/
+.nox/
+.cache
+nosetests.xml
+hypothesis/
+
+# ---------- Environnement & secrets ----------
+.env
+.env.*
+!.env.example
+*.env
+env.py
+.flaskenv
+instance/
+*.sqlite
+*.sqlite3
+*.db
+
+# ---------- Logs ----------
+*.log
+logs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ---------- Flask ----------
+# Dossier instance local (base de données, config locale)
+instance/
+# Fichiers temporaires du serveur de développement
+*.pid
+*.restart
+
+# ---------- Assets front / Tailwind ----------
+node_modules/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+# NB : package-lock.json est volontairement VERSIONNÉ (install reproductible).
+#      static/css/output-style.css est le CSS compilé, également versionné.
+
+# ---------- Déploiement ----------
+.Python
+.venv.bak/
+*.manifest
+*.spec
+
+# ---------- Éditeurs / IDE ----------
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+.vim/
+.project
+.pydevproject
+.spyderproject
+.spyproject
+.claude/
+
+# ---------- Système d'exploitation ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini

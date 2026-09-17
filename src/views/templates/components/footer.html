@@ -1,0 +1,129 @@
+{# ==========================================================================
+   COMPOSANT : Pied de page (footer)
+   --------------------------------------------------------------------------
+   Inclus depuis base.html :  {% include "components/footer.html" %}
+   Contient : identité, liens programmes, antennes CDU, newsletter, mentions.
+   Statique pour le moment (liens "#" + attribut data-path).
+   ========================================================================== #}
+<footer
+  class="w-full bg-brand-navy-deep text-surface-container-high font-body-sm text-body-sm pt-space-xl pb-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+  <div class="max-w-7xl mx-auto px-gutter">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-space-xl">
+
+      {# ---------- Identité ---------- #}
+      <div class="lg:col-span-4 flex flex-col gap-space-md">
+        <div class="flex items-center gap-space-sm">
+          <img alt="Logo CAMPAEXPO RDC" class="h-9 w-auto brightness-0 invert object-contain"
+            src="https://lh3.googleusercontent.com/aida/AEtjO1UIehih6H-eDTSV9vDwvXfEf3GqCZ9PYF6VLiR6oTZlv9kU84hVB7SBr9pw5YsjHykEPGS3l3027G-XVZCFJjJQz4SmQhtCraXBF0ve0dlLP9ezM27OEgNduo4MgzvI_8M40aWhYt-SNFszw4IW0_zgBIKFJF6cWWDCuLjT5bYZbWh95is1K2UJle6ZGAnyWsJcgAefb-ylaacuhrrGVieZByoixbv9ektrUbue9slslNhjFCJvkno9m6A" />
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm font-extrabold text-on-primary tracking-tight">CAMPAEXPO<span
+                class="text-brand-emerald-vibrant ml-0.5">RDC</span></span>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-text-muted">Direction Nationale</span>
+          </div>
+        </div>
+
+        <p class="text-text-muted leading-relaxed max-w-sm">Réveiller et propulser le potentiel entrepreneurial de
+          l'étudiant congolais. Le pont d'excellence entre les universités, le mentorat d'élite et le
+          capital-investissement panafricain.</p>
+
+        <div class="flex flex-col gap-space-xs text-text-muted">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[18px]">location_on</span>
+            <span>Boulevard du 30 Juin, Gombe, Kinshasa - RDC</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[18px]">mail</span>
+            <span>secretariat@campaexpo-rdc.cd</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[18px]">call</span>
+            <span>+243 820 000 120 / +243 990 000 121</span>
+          </div>
+        </div>
+      </div>
+
+      {# ---------- Programmes ---------- #}
+      <div class="lg:col-span-2 flex flex-col gap-space-sm">
+        <span class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-primary">Programmes</span>
+        <ul class="flex flex-col gap-2">
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
+              href="#">Incubation Campus</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
+              href="#">Mentorat Panafricain</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
+              href="#">Bootcamps &amp; Formations</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
+              href="#">Grande Exposition Annuelle</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
+              href="#">Bourses d'Amorçage Seed</a></li>
+        </ul>
+      </div>
+
+      {# ---------- Antennes CDU ---------- #}
+      <div class="lg:col-span-2 flex flex-col gap-space-sm">
+        <span class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-primary">CDU par
+          Province</span>
+        <ul class="flex flex-col gap-2">
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
+              href="#">Antenne Kinshasa</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
+              href="#">Antenne Haut-Katanga</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
+              href="#">Antenne Kongo-Central</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
+              href="#">Antenne Nord-Kivu</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
+              href="#">Antenne Kasaï-Central</a></li>
+          <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
+              href="#">Rejoindre un comité</a></li>
+        </ul>
+      </div>
+
+      {# ---------- Newsletter ---------- #}
+      <div class="lg:col-span-4 flex flex-col gap-space-md">
+        <span class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-primary">Restez informé
+          (Newsletter)</span>
+        <p class="text-text-muted leading-relaxed">Recevez les appels à projets, les masterclasses de mentors et les
+          subventions pour startups universitaires.</p>
+
+        <div class="flex flex-col gap-space-xs">
+          <div class="flex items-center gap-2">
+            <input
+              class="flex-1 bg-brand-navy-surface text-on-primary placeholder:text-text-muted px-space-md py-2.5 rounded-lg text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container"
+              placeholder="votre.email@universite.cd" type="email" />
+            <button
+              class="bg-brand-emerald-vibrant hover:bg-primary text-on-primary px-space-md py-2.5 rounded-lg font-label-lg text-label-lg font-semibold transition-colors"
+              type="button">S'inscrire</button>
+          </div>
+          <span class="text-[12px] text-text-muted">Protection des données garantie par la charte d'éthique
+            CAMPAEXPO.</span>
+        </div>
+
+        <div class="mt-space-xs">
+          <span class="block text-xs font-semibold text-text-muted mb-2 uppercase tracking-wider">Partenaires
+            Institutionnels</span>
+          <div class="flex flex-wrap items-center gap-space-sm text-text-muted text-xs font-semibold">
+            <span class="px-2 py-1 bg-brand-navy-surface rounded">ESU - RDC</span>
+            <span class="px-2 py-1 bg-brand-navy-surface rounded">Ministère Jeunesse &amp; Entrepreneuriat</span>
+            <span class="px-2 py-1 bg-brand-navy-surface rounded">Universités Partenaires</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {# ---------- Barre inférieure ---------- #}
+    <div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md text-text-muted text-xs">
+      <p>© 2026 CAMPAEXPO RDC. Plateforme Nationale de l'Entrepreneuriat Étudiant. Tous droits réservés.</p>
+      <div class="flex items-center gap-space-md">
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Mentions légales</a>
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Politique de
+          confidentialité</a>
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Charte d'incubation</a>
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Contact Kinshasa</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

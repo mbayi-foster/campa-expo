@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>{% block title %}{{ page_title }}{% endblock %}</title>
+
+    {# Polices : Plus Jakarta Sans + icônes Material Symbols #}
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet">
+
+    {# CSS compilé depuis static/css/style.css (Tailwind v4) #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output-style.css') }}">
+
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body class="bg-bg-canvas font-body-md text-on-surface antialiased">
+
+    {# ---------- Composant : en-tête ---------- #}
+    {% include "components/header.html" %}
+
+    <main class="w-full pt-28 bg-bg-canvas min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    {# ---------- Composant : pied de page ---------- #}
+    {% include "components/footer.html" %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

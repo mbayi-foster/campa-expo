@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Page introuvable — {{ config.APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="flex flex-col w-full">
+    <section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+        <div class="max-w-7xl mx-auto px-gutter flex flex-col items-center text-center gap-space-md">
+            <span class="font-stat-counter text-stat-counter text-brand-emerald-vibrant">404</span>
+            <h1 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                Page introuvable
+            </h1>
+            <p class="font-body-lg text-body-lg text-text-secondary max-w-xl">
+                La page que vous cherchez n'existe pas ou a été déplacée.
+            </p>
+            <a class="inline-flex items-center justify-center px-space-xl py-3.5 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg shadow-lg shadow-brand-emerald-vibrant/25 transition-all duration-200 gap-2 mt-space-sm"
+                href="{{ url_for('home.index') }}">
+                <span class="material-symbols-outlined text-[20px]">home</span>
+                <span>Retour à l'accueil</span>
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}

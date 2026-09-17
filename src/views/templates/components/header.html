@@ -1,0 +1,79 @@
+{# ==========================================================================
+   COMPOSANT : En-tête (header)
+   --------------------------------------------------------------------------
+   Inclus depuis base.html :  {% include "components/header.html" %}
+   Contient : le bandeau d'appel officiel + la barre de navigation fixe.
+   Statique pour le moment (liens "#" + attribut data-path).
+   ========================================================================== #}
+<header class="fixed top-0 inset-x-0 z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+
+  {# ---------- Bandeau d'annonce ---------- #}
+  <div class="bg-brand-navy-deep text-on-primary py-space-xs px-gutter">
+    <div class="max-w-7xl mx-auto flex items-center justify-between font-label-md text-label-md">
+      <div class="flex items-center gap-space-sm">
+        <span class="bg-brand-amber-flame text-on-primary px-space-sm py-0.5 rounded-full font-bold uppercase tracking-wider text-[10px]">Appel
+          Officiel</span>
+        <span class="hidden sm:inline font-medium text-surface-container-high">Édition CAMPAEXPO 2026
+          : Appel à projets ouvert à toutes les universités de RDC</span>
+        <span class="sm:hidden font-medium text-surface-container-high truncate max-w-[200px]">CAMPAEXPO 2026 : Appel
+          ouvert</span>
+      </div>
+      <a class="inline-flex items-center gap-1 text-primary-fixed hover:text-on-primary font-semibold transition-colors duration-150"
+        data-path="programmes" href="#">Participer<span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+    </div>
+  </div>
+
+  {# ---------- Barre de navigation ---------- #}
+  <div class="bg-bg-surface/95 backdrop-blur-xl h-20">
+    <div class="max-w-7xl mx-auto h-full px-gutter flex items-center justify-between gap-space-md">
+
+      {# Logo #}
+      <div class="flex items-center gap-space-md">
+        <a class="flex items-center gap-space-sm group" data-path="accueil" href="#">
+          <img alt="Logo CAMPAEXPO RDC" class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida/AEtjO1UIehih6H-eDTSV9vDwvXfEf3GqCZ9PYF6VLiR6oTZlv9kU84hVB7SBr9pw5YsjHykEPGS3l3027G-XVZCFJjJQz4SmQhtCraXBF0ve0dlLP9ezM27OEgNduo4MgzvI_8M40aWhYt-SNFszw4IW0_zgBIKFJF6cWWDCuLjT5bYZbWh95is1K2UJle6ZGAnyWsJcgAefb-ylaacuhrrGVieZByoixbv9ektrUbue9slslNhjFCJvkno9m6A" />
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm font-extrabold text-brand-navy-deep tracking-tight group-hover:text-primary transition-colors">CAMPAEXPO<span
+                class="text-brand-emerald-vibrant ml-0.5">RDC</span></span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-text-muted -mt-1">Écosystème
+              Universitaire</span>
+          </div>
+        </a>
+      </div>
+
+      {# Navigation principale #}
+      <nav class="hidden xl:flex items-center gap-1 p-1 bg-surface-container-low rounded-xl">
+        <a aria-current="page"
+          class="px-space-md py-space-xs transition-colors duration-150 bg-primary-container text-on-primary font-semibold rounded-lg shadow-sm"
+          data-path="accueil" href="#">Accueil</a>
+        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
+          data-path="a-propos" href="#">À propos</a>
+        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
+          data-path="programmes" href="#">Programmes</a>
+        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
+          data-path="projets-etudiants" href="#">Projets étudiants</a>
+        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
+          data-path="evenements" href="#">Événements</a>
+        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
+          data-path="mentors-partenaires" href="#">Mentors &amp; Partenaires</a>
+        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
+          data-path="cdu-comites" href="#">CDU</a>
+      </nav>
+
+      {# Actions #}
+      <div class="flex items-center gap-space-sm">
+        <a class="hidden sm:inline-flex items-center justify-center px-space-md py-2.5 bg-brand-navy-deep hover:bg-brand-navy-surface text-on-secondary rounded-lg font-label-lg text-label-lg transition-all shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]"
+          data-path="connexion" href="#">Espace Étudiant</a>
+        <a class="inline-flex items-center justify-center px-space-md py-2.5 bg-primary-container hover:bg-brand-emerald-vibrant text-on-primary font-label-lg text-label-lg font-semibold rounded-lg shadow-sm hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.06)] active:scale-[0.98] transition-all gap-1.5"
+          data-path="soumettre-projet" href="#">
+          <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+          <span>Soumettre un projet</span>
+        </a>
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-inner ml-1">
+          <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>

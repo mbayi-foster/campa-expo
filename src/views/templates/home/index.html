@@ -1,0 +1,934 @@
+{% extends "base.html" %}
+
+{% block title %}CAMPAEXPO RDC - Plateforme Nationale de l'Entrepreneuriat Étudiant{% endblock %}
+
+{% block content %}
+<div class="flex flex-col w-full">
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden bg-brand-navy-deep text-on-primary">
+        <!-- Atmospheric Ambient Glow Elements -->
+        <div
+            class="absolute -top-32 -left-32 w-96 h-96 bg-brand-emerald-vibrant/20 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-amber-flame/15 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto px-gutter py-space-xl lg:py-28 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+                <!-- Hero Content (7 Cols) -->
+                <div class="lg:col-span-7 flex flex-col gap-space-lg">
+                    <!-- Overline Tag -->
+                    <div
+                        class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-highest/10 w-fit backdrop-blur-md">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-emerald-vibrant animate-pulse"></span>
+                        <span class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed">Plateforme
+                            Nationale Officielle RDC</span>
+                    </div>
+                    <!-- Main Typography Stack -->
+                    <div class="flex flex-col gap-space-sm">
+                        <h1
+                            class="font-display-hero text-display-hero font-extrabold tracking-tight leading-tight text-surface-container-lowest">
+                            CAMPAEXPO <span class="text-brand-emerald-vibrant">RDC</span>
+                        </h1>
+                        <p
+                            class="font-headline-lg text-headline-lg font-bold text-surface-container-highest max-w-2xl leading-snug">
+                            La vitrine de l'entrepreneuriat étudiant en République Démocratique du Congo
+                        </p>
+                        <div class="relative pl-space-md mt-space-xs">
+                            <div class="absolute left-0 top-1 bottom-1 w-1 bg-brand-amber-flame rounded-full"></div>
+                            <p class="font-body-lg text-body-lg font-medium text-text-muted italic">
+                                « Réveiller le potentiel entrepreneurial de l'étudiant congolais. »
+                            </p>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-body-md text-surface-container leading-relaxed max-w-xl">
+                        Du campus universitaire aux investisseurs panafricains : nous structurons, finançons et
+                        propulsons les
+                        innovations qui bâtissent l'avenir technologique, agricole et écologique de notre nation.
+                    </p>
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+                        <a class="inline-flex items-center justify-center px-space-xl py-3.5 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg shadow-lg shadow-brand-emerald-vibrant/25 transition-all duration-200 gap-2 active:scale-95"
+                            data-path="soumettre-projet" href="#">
+                            <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                            <span>Soumettre mon projet</span>
+                        </a>
+                        <a class="inline-flex items-center justify-center px-space-xl py-3.5 bg-surface-container-highest/10 hover:bg-surface-container-highest/20 text-on-primary font-label-lg text-label-lg font-semibold rounded-lg backdrop-blur-md transition-all duration-200 gap-2"
+                            data-path="a-propos" href="#">
+                            <span class="material-symbols-outlined text-[20px]">explore</span>
+                            <span>Découvrir CAMPAEXPO</span>
+                        </a>
+                    </div>
+                    <!-- Proof Badges Micro-bar -->
+                    <div class="pt-space-md flex items-center gap-space-lg text-text-muted font-label-md text-label-md">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[18px]">verified</span>
+                            <span>Accompagnement gratuit</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-brand-amber-flame text-[18px]">hub</span>
+                            <span>28 Universités connectées</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Visual Composition (5 Cols) -->
+                <div class="lg:col-span-5 relative">
+                    <!-- Main Hero Image Frame -->
+                    <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl bg-brand-navy-surface">
+                        <img class="w-full h-full object-cover"
+                            alt="Étudiants universitaires congolais collaborant dans un fablab campus à Kinshasa, présentant des prototypes numériques."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7gC9ZYQFD8SGMXEICsx81DheQqSgwJx3k1PC6uSzfH-HKjZo2A4UqLUv96VC3sKqnu0SUCITaLp20zhUR8v9VrQ-W-ePw8TzOpGyotOFuWXAlmjbXJZdCzUa-ftDncrNcT8A2HXpTBcGFEiurKE5TF9xSRuex3KY4rxHM_XJaKzV897jUfEoUr7o453MWeATb4jRsKMhjUKiaT0pt_00bIUCIO_odOIrPlhoRVL8yWmhfbEx9RgLi" />
+                        <div
+                            class="absolute inset-0 bg-linear-to-t from-brand-navy-deep via-transparent to-transparent opacity-80">
+                        </div>
+                        <!-- Bottom Floating Overlay on Image -->
+                        <div
+                            class="absolute bottom-space-md inset-x-space-md bg-brand-navy-deep/80 backdrop-blur-md p-space-md rounded-lg flex items-center justify-between text-on-primary">
+                            <div class="flex flex-col">
+                                <span class="font-label-md text-label-md text-primary-fixed uppercase tracking-wider">Sélection
+                                    2026</span>
+                                <span class="font-headline-sm text-headline-sm font-bold text-surface-container-lowest">Cohorte RDC
+                                    26 Provinces</span>
+                            </div>
+                            <span
+                                class="w-8 h-8 rounded-full bg-brand-emerald-vibrant flex items-center justify-center text-on-primary">
+                                <span class="material-symbols-outlined text-[20px]">north_east</span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Floating Badges Layered -->
+                    <div class="absolute -top-6 -left-6 bg-bg-surface text-brand-navy-deep px-space-md py-space-sm rounded-lg shadow-xl flex items-center gap-space-sm z-20 animate-bounce"
+                        style="animation-duration: 4s;">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-brand-emerald-light flex items-center justify-center text-brand-emerald-dark">
+                            <span class="material-symbols-outlined text-[22px]">agriculture</span>
+                        </div>
+                        <div>
+                            <p class="font-label-md text-label-md font-bold">AgroTech Kivu</p>
+                            <p class="text-[11px] text-text-secondary">IoT &amp; Rendements +40%</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-1/2 -right-6 bg-bg-surface text-brand-navy-deep px-space-md py-space-sm rounded-lg shadow-xl flex items-center gap-space-sm z-20">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-brand-amber-light flex items-center justify-center text-brand-amber-flame">
+                            <span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+                        </div>
+                        <div>
+                            <p class="font-label-md text-label-md font-bold">FinTech &amp; Inclusif</p>
+                            <p class="text-[11px] text-text-secondary">KinPay Bourse Mobile</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute -bottom-6 left-12 bg-brand-navy-surface text-on-primary px-space-md py-space-sm rounded-lg shadow-2xl flex items-center gap-space-sm z-20">
+                        <div class="w-8 h-8 rounded-full bg-brand-emerald-vibrant flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[18px]">wifi_tethering</span>
+                        </div>
+                        <span class="font-label-md text-label-md font-semibold text-primary-fixed">Campus Connecté RDC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECTION STATISTIQUES DYNAMIQUES (Key Metrics) -->
+    <section class="w-full bg-bg-surface py-space-xl relative z-20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-space-md lg:gap-space-lg">
+                <!-- Stat Item 1 -->
+                <div class="flex flex-col p-space-lg rounded-xl bg-surface-container-low transition-all duration-200 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-space-xs">
+                        <span class="font-stat-counter text-stat-counter text-brand-emerald-vibrant tracking-tight">+1,500</span>
+                        <span class="material-symbols-outlined text-brand-emerald-vibrant text-[24px]">school</span>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Étudiants formés</span>
+                    <span class="font-body-sm text-body-sm text-text-secondary mt-1">Accompagnement méthodologique de
+                        terrain</span>
+                </div>
+                <!-- Stat Item 2 -->
+                <div class="flex flex-col p-space-lg rounded-xl bg-surface-container-low transition-all duration-200 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-space-xs">
+                        <span class="font-stat-counter text-stat-counter text-brand-amber-flame tracking-tight">+340</span>
+                        <span class="material-symbols-outlined text-brand-amber-flame text-[24px]">rocket</span>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Projets propulsés</span>
+                    <span class="font-body-sm text-body-sm text-text-secondary mt-1">De l'idée au prototype
+                        industrialisable</span>
+                </div>
+                <!-- Stat Item 3 -->
+                <div class="flex flex-col p-space-lg rounded-xl bg-surface-container-low transition-all duration-200 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-space-xs">
+                        <span class="font-stat-counter text-stat-counter text-brand-emerald-dark tracking-tight">28</span>
+                        <span class="material-symbols-outlined text-brand-emerald-dark text-[24px]">apartment</span>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Universités et IS</span>
+                    <span class="font-body-sm text-body-sm text-text-secondary mt-1">Campus partenaires officiels
+                        signataires</span>
+                </div>
+                <!-- Stat Item 4 -->
+                <div class="flex flex-col p-space-lg rounded-xl bg-surface-container-low transition-all duration-200 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-space-xs">
+                        <span class="font-stat-counter text-stat-counter text-status-info tracking-tight">+85</span>
+                        <span class="material-symbols-outlined text-status-info text-[24px]">diversity_3</span>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Mentors engagés</span>
+                    <span class="font-body-sm text-body-sm text-text-secondary mt-1">Dirigeants d'entreprises &amp; experts
+                        métiers</span>
+                </div>
+                <!-- Stat Item 5 -->
+                <div
+                    class="col-span-2 md:col-span-1 flex flex-col p-space-lg rounded-xl bg-surface-container-low transition-all duration-200 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-space-xs">
+                        <span class="font-stat-counter text-stat-counter text-primary tracking-tight">12</span>
+                        <span class="material-symbols-outlined text-primary text-[24px]">map</span>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Provinces RDC</span>
+                    <span class="font-body-sm text-body-sm text-text-secondary mt-1">Représentativité nationale active</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. NOTRE MISSION : LE PARCOURS EN 5 ÉTAPES -->
+    <section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+                <div class="flex flex-col gap-space-xs max-w-2xl">
+                    <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Méthodologie
+                        Éprouvée</span>
+                    <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                        Notre Mission : Du Campus à l'Impact National
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-text-secondary">
+                        Un cheminement rigoureux en 5 étapes structurées pour transformer le savoir académique en entreprises
+                        durables et rentables.
+                    </p>
+                </div>
+                <div
+                    class="hidden md:flex items-center gap-space-xs bg-surface-container-low px-space-md py-2 rounded-lg text-text-secondary font-label-md text-label-md">
+                    <span class="material-symbols-outlined text-brand-emerald-vibrant text-[18px]">verified_user</span>
+                    <span>Cycle certifié CAMPAEXPO</span>
+                </div>
+            </div>
+            <!-- 5 Step Cards Pipeline -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-space-md relative">
+                <!-- Step 1 -->
+                <div class="bg-bg-surface p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+                    <div class="flex flex-col gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="w-8 h-8 rounded-full bg-brand-emerald-light text-brand-emerald-dark font-headline-sm text-headline-sm font-extrabold flex items-center justify-center">01</span>
+                            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[24px]">wb_twilight</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep group-hover:text-brand-emerald-vibrant transition-colors">
+                            Réveiller</h3>
+                        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                            Sensibilisation intensive et sessions d'idéation directement au cœur des facultés et auditoires de
+                            RDC.
+                        </p>
+                    </div>
+                    <div class="mt-space-md pt-space-xs flex items-center gap-1 text-[12px] font-semibold text-brand-emerald-vibrant">
+                        <span>Phase Campus</span>
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-bg-surface p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+                    <div class="flex flex-col gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="w-8 h-8 rounded-full bg-brand-amber-light text-on-tertiary-fixed font-headline-sm text-headline-sm font-extrabold flex items-center justify-center">02</span>
+                            <span class="material-symbols-outlined text-brand-amber-flame text-[24px]">architecture</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep group-hover:text-brand-amber-flame transition-colors">
+                            Structurer</h3>
+                        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                            Validation scientifique, formulation de la proposition de valeur et études rigoureuses de faisabilité
+                            locale.
+                        </p>
+                    </div>
+                    <div class="mt-space-md pt-space-xs flex items-center gap-1 text-[12px] font-semibold text-brand-amber-flame">
+                        <span>Modèle Économique</span>
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-bg-surface p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+                    <div class="flex flex-col gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-extrabold flex items-center justify-center">03</span>
+                            <span class="material-symbols-outlined text-status-info text-[24px]">model_training</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep group-hover:text-status-info transition-colors">
+                            Former</h3>
+                        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                            Bootcamps intensifs, construction du plan financier, marketing digital et techniques de pitch
+                            scénique.
+                        </p>
+                    </div>
+                    <div class="mt-space-md pt-space-xs flex items-center gap-1 text-[12px] font-semibold text-status-info">
+                        <span>Bootcamp 60h</span>
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-bg-surface p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+                    <div class="flex flex-col gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="w-8 h-8 rounded-full bg-brand-emerald-light text-brand-emerald-dark font-headline-sm text-headline-sm font-extrabold flex items-center justify-center">04</span>
+                            <span class="material-symbols-outlined text-brand-emerald-dark text-[24px]">support_agent</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep group-hover:text-brand-emerald-dark transition-colors">
+                            Accompagner</h3>
+                        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                            Mentorat personnalisé bi-mensuel avec des directeurs généraux, ingénieurs seniors et entrepreneurs
+                            certifiés.
+                        </p>
+                    </div>
+                    <div class="mt-space-md pt-space-xs flex items-center gap-1 text-[12px] font-semibold text-brand-emerald-dark">
+                        <span>1-on-1 Mentorat</span>
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="bg-bg-surface p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+                    <div class="flex flex-col gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="w-8 h-8 rounded-full bg-brand-amber-light text-on-tertiary-fixed font-headline-sm text-headline-sm font-extrabold flex items-center justify-center">05</span>
+                            <span class="material-symbols-outlined text-brand-amber-flame text-[24px]">workspace_premium</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep group-hover:text-brand-amber-flame transition-colors">
+                            Valoriser</h3>
+                        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                            Grande exposition nationale annuelle, signature de partenariats commerciaux et levée de fonds
+                            d'amorçage.
+                        </p>
+                    </div>
+                    <div class="mt-space-md pt-space-xs flex items-center gap-1 text-[12px] font-semibold text-brand-amber-flame">
+                        <span>Scène CAMPAEXPO</span>
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. NOS PROGRAMMES PHARES -->
+    <section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <div class="text-center max-w-3xl mx-auto mb-space-xl flex flex-col gap-space-xs">
+                <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Nos
+                    Piliers d'Action</span>
+                <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                    Des programmes conçus pour faire émerger l'excellence
+                </h2>
+                <p class="font-body-lg text-body-lg text-text-secondary">
+                    Chaque initiative répond à un besoin spécifique du cycle de vie des projets étudiants congolais.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                <!-- Program 1 -->
+                <div class="bg-surface-container-low p-space-xl rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between">
+                    <div class="flex flex-col gap-space-md">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-lg bg-brand-emerald-light text-brand-emerald-dark flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[28px]">biotech</span>
+                            </div>
+                            <span class="px-space-sm py-1 bg-brand-emerald-light text-brand-emerald-dark rounded-full font-label-md text-label-md font-bold">6
+                                Mois Intensifs</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Incubation Universitaire
+                        </h3>
+                        <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+                            Accompagnement complet de 6 mois intégrant laboratoire de prototypage, accès aux infrastructures
+                            universitaires et bourses d'amorçage.
+                        </p>
+                    </div>
+                    <div class="pt-space-lg flex items-center justify-between">
+                        <span class="font-label-md text-label-md text-text-muted">Prochaine cohorte : Avril 2026</span>
+                        <a class="inline-flex items-center gap-1 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant"
+                            data-path="programmes" href="#">
+                            Explorer <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Program 2 -->
+                <div class="bg-surface-container-low p-space-xl rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between">
+                    <div class="flex flex-col gap-space-md">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[28px]">handshake</span>
+                            </div>
+                            <span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded-full font-label-md text-label-md font-bold">Mentorat
+                                1:1</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Coaching &amp; Mentoring
+                        </h3>
+                        <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+                            Matching personnalisé avec un mentor expérimenté issu des multinationales, de la diaspora ou des
+                            entreprises phares de RDC.
+                        </p>
+                    </div>
+                    <div class="pt-space-lg flex items-center justify-between">
+                        <span class="font-label-md text-label-md text-text-muted">+85 mentors certifiés</span>
+                        <a class="inline-flex items-center gap-1 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant"
+                            data-path="mentors-partenaires" href="#">
+                            Trouver un mentor <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Program 3 -->
+                <div class="bg-surface-container-low p-space-xl rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between">
+                    <div class="flex flex-col gap-space-md">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-lg bg-brand-amber-light text-on-tertiary-fixed flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[28px]">terminal</span>
+                            </div>
+                            <span class="px-space-sm py-1 bg-brand-amber-light text-on-tertiary-fixed-variant rounded-full font-label-md text-label-md font-bold">Pratique
+                                Immédiate</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Formations &amp; Bootcamps
+                        </h3>
+                        <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+                            Masterclasses certifiantes axées sur le codage applicatif, la gestion financière d'exploitation, le
+                            droit OHADA et le pitch commercial.
+                        </p>
+                    </div>
+                    <div class="pt-space-lg flex items-center justify-between">
+                        <span class="font-label-md text-label-md text-text-muted">Certificat délivré</span>
+                        <a class="inline-flex items-center gap-1 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant"
+                            data-path="programmes" href="#">
+                            Calendrier <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Program 4 -->
+                <div class="bg-surface-container-low p-space-xl rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between lg:col-span-2">
+                    <div class="flex flex-col gap-space-md">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-lg bg-brand-emerald-dark text-on-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[28px]">stars</span>
+                            </div>
+                            <span class="px-space-sm py-1 bg-brand-emerald-dark text-on-primary rounded-full font-label-md text-label-md font-bold">Rendez-vous
+                                National</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Grande Exposition Annuelle
+                            CAMPAEXPO</h3>
+                        <p class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-2xl">
+                            Le plus grand showroom technologique et entrepreneurial étudiant d'Afrique Centrale. Plus de 5 000
+                            visiteurs, investisseurs providentiels, ministres et dirigeants industriels réunis pour signer des
+                            contrats et distribuer les Grands Prix d'Innovation.
+                        </p>
+                    </div>
+                    <div class="pt-space-lg flex flex-wrap items-center justify-between gap-space-sm">
+                        <div class="flex items-center gap-space-sm text-text-secondary font-label-md text-label-md">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px] text-brand-emerald-vibrant">pin_drop</span> Kinshasa
+                                2026</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px] text-brand-amber-flame">trophy</span> 50,000 USD de
+                                Prix</span>
+                        </div>
+                        <a class="inline-flex items-center gap-1 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant"
+                            data-path="evenements" href="#">
+                            Détails de l'Expo <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Program 5 -->
+                <div class="bg-surface-container-low p-space-xl rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between">
+                    <div class="flex flex-col gap-space-md">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-lg bg-brand-navy-deep text-on-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[28px]">groups</span>
+                            </div>
+                            <span class="px-space-sm py-1 bg-brand-navy-surface text-on-primary rounded-full font-label-md text-label-md font-bold">Comités
+                                CDU</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Mobilisation Universitaire
+                        </h3>
+                        <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+                            Nos Comités de Développement Universitaires (CDU) animent des cellules permanentes au sein de chaque
+                            université membre à travers les provinces.
+                        </p>
+                    </div>
+                    <div class="pt-space-lg flex items-center justify-between">
+                        <span class="font-label-md text-label-md text-text-muted">12 antennes actives</span>
+                        <a class="inline-flex items-center gap-1 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant"
+                            data-path="cdu-comites" href="#">
+                            Rejoindre un CDU <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. VITRINE DES PROJETS ÉTUDIANTS (Sélection en vedette) -->
+    <section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <!-- Section Title with Filter Preview -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+                <div class="flex flex-col gap-space-xs max-w-2xl">
+                    <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Catalogue
+                        Actif</span>
+                    <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                        Innovations d'étudiants congolais en vedette
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-text-secondary">
+                        Des prototypes validés, testés en conditions réelles et prêts pour l'échelle industrielle.
+                    </p>
+                </div>
+                <a class="inline-flex items-center gap-2 px-space-md py-2.5 bg-bg-surface text-brand-navy-deep font-label-lg text-label-lg font-semibold rounded-lg shadow-sm hover:shadow-md transition-all"
+                    data-path="projets-etudiants" href="#">
+                    <span>Consulter les +340 projets</span>
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+            </div>
+            <!-- 3 Featured Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                <!-- Project 1: AgroTech Kivu -->
+                <div class="bg-bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-brand-navy-surface">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            alt="Jeune étudiant agronome congolais à Goma tenant un capteur IoT dans un champ maraîcher près du lac Kivu."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuD_cT6A6DQVUUwsTXzrOpWcHLsBEmMz00c-RWSlF5dKOCT1YiEu1Bq2dCvxB3Synp5s8Gp1ofS2xuSaYZWiVkfOUEYzEpoN2U5p4_ZWKWYelAZQE6ENltiDy8kEIJVxYTqvVMPwKQps_GZtp-L_o7rnCmf1opTz9iVp7d0H3F0z_WjRqO_2F1R9plfRUaTMaJp8Ef0Qn39h-pyLzMTRl9AC2I5Rb_bpaCFzzkU0anfFISzDQwhZB9" />
+                        <div class="absolute top-space-sm left-space-sm">
+                            <span class="px-space-sm py-1 bg-brand-emerald-light text-brand-emerald-dark rounded-full font-label-md text-label-md font-bold">AgriTech
+                                &amp; Climat</span>
+                        </div>
+                        <div class="absolute top-space-sm right-space-sm">
+                            <span class="px-space-sm py-1 bg-brand-navy-deep/80 backdrop-blur-sm text-on-primary rounded-full font-label-md text-label-md font-semibold">Nord-Kivu</span>
+                        </div>
+                    </div>
+                    <div class="p-space-lg flex-1 flex flex-col justify-between">
+                        <div class="flex flex-col gap-space-xs">
+                            <div class="flex items-center gap-2 text-text-muted font-label-md text-label-md">
+                                <span class="material-symbols-outlined text-[16px]">school</span>
+                                <span>Université de Goma (UNIGOM)</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep group-hover:text-brand-emerald-vibrant transition-colors">
+                                AgroTech Kivu
+                            </h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary line-clamp-2 leading-relaxed">
+                                Boîtier IoT solaire à capteurs d'humidité et d'azote relié à une application mobile SMS pour guider
+                                l'irrigation des coopératives de café et maraîchères.
+                            </p>
+                        </div>
+                        <div class="pt-space-md mt-space-md flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-status-success"></span>
+                                <span class="font-label-md text-label-md font-semibold text-text-secondary">Phase Déploiement
+                                    Terrain</span>
+                            </div>
+                            <a class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant hover:text-brand-emerald-dark inline-flex items-center gap-1"
+                                data-path="projets-etudiants" href="#">
+                                <span>Voir le projet</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2: KinPay Student -->
+                <div class="bg-bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-brand-navy-surface">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            alt="Étudiante congolaise en informatique à l'UNIKIN utilisant une application de portefeuille mobile sur smartphone."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDWuKx3W33VRAOXlrWCFxF9zLkgh-KLwv89NOAKhec7qHvrWJN5jN6QyMsD99oG5QRLPBgeZ55ty9fGrJMwyfZyJZItTb--4lCZtyL6lDzCtxZ1llqzZ_yZoaUfSMX5WG9rtHbFbhOwoBD2ais4Ogf7ZDLhokYM20qHHzxUqY41shAcsZ6saADe7vpBa9ohf7n1krozWuPcO7BXH6vHUOUqtKQTRkt88Dg0aZGuCCy_fNgIECl6dVt" />
+                        <div class="absolute top-space-sm left-space-sm">
+                            <span class="px-space-sm py-1 bg-surface-container-highest text-primary font-label-md text-label-md font-bold rounded-full">FinTech
+                                &amp; Éducation</span>
+                        </div>
+                        <div class="absolute top-space-sm right-space-sm">
+                            <span class="px-space-sm py-1 bg-brand-navy-deep/80 backdrop-blur-sm text-on-primary rounded-full font-label-md text-label-md font-semibold">Kinshasa</span>
+                        </div>
+                    </div>
+                    <div class="p-space-lg flex-1 flex flex-col justify-between">
+                        <div class="flex flex-col gap-space-xs">
+                            <div class="flex items-center gap-2 text-text-muted font-label-md text-label-md">
+                                <span class="material-symbols-outlined text-[16px]">school</span>
+                                <span>Université de Kinshasa (UNIKIN)</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep group-hover:text-brand-emerald-vibrant transition-colors">
+                                KinPay Student
+                            </h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary line-clamp-2 leading-relaxed">
+                                Solution de micro-épargne collective et distribution sécurisée de bourses et micro-crédits d'urgence
+                                pour frais académiques via Mobile Money congolais.
+                            </p>
+                        </div>
+                        <div class="pt-space-md mt-space-md flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-status-warning"></span>
+                                <span class="font-label-md text-label-md font-semibold text-text-secondary">Phase Pilote 2,400
+                                    Users</span>
+                            </div>
+                            <a class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant hover:text-brand-emerald-dark inline-flex items-center gap-1"
+                                data-path="projets-etudiants" href="#">
+                                <span>Voir le projet</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3: CongoClean Energy -->
+                <div class="bg-bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-brand-navy-surface">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            alt="Étudiants ingénieurs congolais à Lubumbashi examinant des briquettes écologiques issues de déchets agricoles."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtYY3qSCiL3Dyhp09SCx7LpajcnGP4VlAnjEVR5euonfiU39dS1FYQ9pMpnzu9jml64-dMyVJj1pTQxcYrMu77S7s2EUQMcOt3MuPDBSThJfv5-_MQSJOGz7h7yTyctCDZ1U9mO9_xebIJZVP_sCQzPKJnvqITg9vsNA4HBv9LdUNegUSCNwle4UaW55JyT7jNqXcFoDm7C3m5JLb5s26sMwOt6E8ErE3HWD2f9lBTTefiU1kwQMaR" />
+                        <div class="absolute top-space-sm left-space-sm">
+                            <span class="px-space-sm py-1 bg-brand-amber-light text-on-tertiary-fixed-variant rounded-full font-label-md text-label-md font-bold">Énergie
+                                Propre</span>
+                        </div>
+                        <div class="absolute top-space-sm right-space-sm">
+                            <span class="px-space-sm py-1 bg-brand-navy-deep/80 backdrop-blur-sm text-on-primary rounded-full font-label-md text-label-md font-semibold">Haut-Katanga</span>
+                        </div>
+                    </div>
+                    <div class="p-space-lg flex-1 flex flex-col justify-between">
+                        <div class="flex flex-col gap-space-xs">
+                            <div class="flex items-center gap-2 text-text-muted font-label-md text-label-md">
+                                <span class="material-symbols-outlined text-[16px]">school</span>
+                                <span>Université Protestante de Lubumbashi (UPL)</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep group-hover:text-brand-emerald-vibrant transition-colors">
+                                CongoClean Energy
+                            </h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary line-clamp-2 leading-relaxed">
+                                Production de briquettes de combustion écologique neutres en carbone à partir de résidus de maïs et
+                                de manioc, alternative directe au charbon de bois (Makala).
+                            </p>
+                        </div>
+                        <div class="pt-space-md mt-space-md flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-emerald-vibrant"></span>
+                                <span class="font-label-md text-label-md font-semibold text-text-secondary">Commercialisation
+                                    Locale</span>
+                            </div>
+                            <a class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant hover:text-brand-emerald-dark inline-flex items-center gap-1"
+                                data-path="projets-etudiants" href="#">
+                                <span>Voir le projet</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ENTREPRENEURS EN VEDETTE & SUCCESS STORIES -->
+    <section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+                <div class="flex flex-col gap-space-xs max-w-2xl">
+                    <span class="font-label-lg text-label-lg font-bold text-brand-amber-flame uppercase tracking-wider">Témoignages
+                        &amp; Réussites</span>
+                    <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                        Ils étaient sur les bancs universitaires hier. Aujourd'hui, ils emploient.
+                    </h2>
+                </div>
+                <div class="font-body-sm text-body-sm text-text-secondary max-w-xs">
+                    Découvrez comment les alumni CAMPAEXPO ont levé des fonds d'amorçage et développé leurs solutions en RDC.
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                <!-- Success Story 1 -->
+                <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between gap-space-md shadow-sm">
+                    <div class="flex items-center gap-space-md">
+                        <div class="w-16 h-16 rounded-full overflow-hidden shrink-0 bg-brand-navy-surface">
+                            <img class="w-full h-full object-cover"
+                                alt="Portrait de Naomie Tshilombo, jeune fondatrice congolaise à Kinshasa."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPDzweMpmoowHFYlUkweAy_0rynbMOnhnu4ZGaR6gRdsGvNwziZA8-0uqdtAnqSS7WucK8ORS53eHJmy065jYk57WagekzaOtBG42wsR1NrUVpKmFgo4lZ6AQ6giC5Q3sTMvvkbPwZFD5ePY8oczBAuNv-GTwEEgCOLKMHqUt8M1q_YlrscU4TAXMOZqpf-v1V7obpvN0Hn0fiKV87DgKlcSdzCJ6gyBAvK5oHQwloyUpCQXXGW-ax" />
+                        </div>
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Naomie Tshilombo</h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary">Promo UNIKIN 2024</p>
+                            <span class="inline-block mt-1 px-2 py-0.5 bg-brand-emerald-light text-brand-emerald-dark font-label-md text-[11px] rounded font-bold">Fondatrice
+                                de AgriLog DRC</span>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+                        « Grâce à CAMPAEXPO, j'ai rencontré mon premier investisseur lors du Forum de Kinshasa. Nous employons
+                        aujourd'hui 14 personnes et connectons 80 maraîchers aux supermarchés. »
+                    </p>
+                    <div class="pt-space-sm flex items-center justify-between font-label-md text-label-md text-text-muted">
+                        <span>Levée d'Amorçage : $25,000</span>
+                        <span class="text-brand-emerald-vibrant font-bold">14 Emplois créés</span>
+                    </div>
+                </div>
+                <!-- Success Story 2 -->
+                <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between gap-space-md shadow-sm">
+                    <div class="flex items-center gap-space-md">
+                        <div class="w-16 h-16 rounded-full overflow-hidden shrink-0 bg-brand-navy-surface">
+                            <img class="w-full h-full object-cover"
+                                alt="Portrait de David Mwamba, jeune ingénieur congolais de Lubumbashi."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDed_mjOyWkG5eYosqMBxlQf1yz43hhMkwkZn-79EQhSRuIoytCjRB1hg-OqtwSsDOZbyS-y0TzncBJzEEG-PdbbWM37x9v6_4yTHpbiCOYFPWGJW1O81YRFO1ex5ojjDwAZvDKpVEq-tyMFdU7T_jP1yiO2cOogJsGyDFARXxkpBz7qPGUAdcami9Hcz7KLpt54oQ9Bvgray2a1cnqHuG5wrVGxJvPxaruhin220rn6-4l71qcyeod" />
+                        </div>
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">David Mwamba</h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary">Promo UNILU 2023</p>
+                            <span class="inline-block mt-1 px-2 py-0.5 bg-brand-amber-light text-on-tertiary-fixed-variant font-label-md text-[11px] rounded font-bold">Co-fondateur
+                                SolarGrid Katanga</span>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+                        « Le coaching individuel m'a permis d'abandonner un modèle théorique pour adopter une formule prépayée
+                        rentable. Le mentorat a transformé mon prototype de fin d'études en SARL. »
+                    </p>
+                    <div class="pt-space-sm flex items-center justify-between font-label-md text-label-md text-text-muted">
+                        <span>Partenaire Mini-Réseaux</span>
+                        <span class="text-brand-amber-flame font-bold">3 Campus équipés</span>
+                    </div>
+                </div>
+                <!-- Success Story 3 -->
+                <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between gap-space-md shadow-sm">
+                    <div class="flex items-center gap-space-md">
+                        <div class="w-16 h-16 rounded-full overflow-hidden shrink-0 bg-brand-navy-surface">
+                            <img class="w-full h-full object-cover"
+                                alt="Portrait de Grace Kahindo, jeune étudiante en biomédical à Bukavu."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC368rqcM6WpB4_RdkUsVKA-WW0DYTzezbjYv0T-eT1eYgSlATsCL0ZKB2ZMeLxoA3-aL_u9VkNshGHWEf2NHr_Quk2b3-fqUlw973Sca7IBkH7l5piGznNBbudqxxU9C81wqQOt9teeGzxB5_OzQFbOPQBUTW3ajzQhsG8YgPiYWqjH7KmiRr4zgZydx_U9WSk7RyW-Q5Y6YsfoNQnBMmLOXtHyOGcRVpk4GZ3mTTxZiXHgnK33cM3" />
+                        </div>
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Grace Kahindo</h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary">Promo UCB Bukavu 2024</p>
+                            <span class="inline-block mt-1 px-2 py-0.5 bg-surface-container-highest text-primary font-label-md text-[11px] rounded font-bold">CEO
+                                MedStock Mobile</span>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+                        « Nous gérions notre stock de pharmacie universitaire manuellement. Le bootcamp CAMPAEXPO m'a donné les
+                        compétences pour coder notre SaaS aujourd'hui déployé dans 6 cliniques du Sud-Kivu. »
+                    </p>
+                    <div class="pt-space-sm flex items-center justify-between font-label-md text-label-md text-text-muted">
+                        <span>Prix National Santé 2024</span>
+                        <span class="text-status-info font-bold">6 Centres de santé</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PROCHAINS ÉVÉNEMENTS -->
+    <section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+                <div class="flex flex-col gap-space-xs max-w-2xl">
+                    <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Agenda
+                        National</span>
+                    <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                        Les Grands Rendez-vous CAMPAEXPO 2026
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-text-secondary">
+                        Rejoignez-nous en présentiel ou en duplex digital depuis votre province.
+                    </p>
+                </div>
+                <a class="inline-flex items-center gap-2 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant"
+                    data-path="evenements" href="#">
+                    <span>Voir tout le calendrier</span>
+                    <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+                <!-- Event Card 1 -->
+                <div class="bg-bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row gap-space-lg items-start sm:items-center justify-between">
+                    <div class="flex items-center gap-space-md">
+                        <div class="w-20 h-20 rounded-xl bg-brand-navy-deep text-on-primary flex flex-col items-center justify-center shrink-0">
+                            <span class="font-headline-lg text-headline-lg font-extrabold text-brand-emerald-vibrant leading-none">18</span>
+                            <span class="font-label-md text-label-md uppercase tracking-wider text-surface-container-highest mt-1">Juin</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-2 font-label-md text-label-md">
+                                <span class="px-2 py-0.5 bg-brand-emerald-light text-brand-emerald-dark rounded font-bold">Présentiel</span>
+                                <span class="text-text-muted">Palais du Peuple &amp; UNIKIN, Kinshasa</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">
+                                Grande Foire CAMPAEXPO Kinshasa 2026
+                            </h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary">
+                                Exposition plénière de 150 startups étudiantes devant les fonds de capital-risque panafricains.
+                            </p>
+                        </div>
+                    </div>
+                    <a class="shrink-0 px-space-md py-2.5 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold rounded-lg transition-colors"
+                        data-path="evenements" href="#">
+                        Réserver mon badge
+                    </a>
+                </div>
+                <!-- Event Card 2 -->
+                <div class="bg-bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row gap-space-lg items-start sm:items-center justify-between">
+                    <div class="flex items-center gap-space-md">
+                        <div class="w-20 h-20 rounded-xl bg-brand-navy-surface text-on-primary flex flex-col items-center justify-center shrink-0">
+                            <span class="font-headline-lg text-headline-lg font-extrabold text-brand-amber-flame leading-none">05</span>
+                            <span class="font-label-md text-label-md uppercase tracking-wider text-surface-container-highest mt-1">Mai</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-2 font-label-md text-label-md">
+                                <span class="px-2 py-0.5 bg-brand-amber-light text-on-tertiary-fixed-variant rounded font-bold">Hybride
+                                    Multi-Campus</span>
+                                <span class="text-text-muted">Lubumbashi • Goma • Kinshasa</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">
+                                Hackathon RDC Innovation : Villes Durables
+                            </h3>
+                            <p class="font-body-sm text-body-sm text-text-secondary">
+                                48 heures non-stop de prototypage inter-universitaire sur les défis d'assainissement et d'énergie.
+                            </p>
+                        </div>
+                    </div>
+                    <a class="shrink-0 px-space-md py-2.5 bg-brand-navy-deep hover:bg-brand-navy-surface text-on-primary font-label-lg text-label-lg font-semibold rounded-lg transition-colors"
+                        data-path="evenements" href="#">
+                        Inscrire son équipe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. POURQUOI CAMPAEXPO & PARTENAIRES -->
+    <section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+        <div class="max-w-7xl mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center mb-space-xl">
+                <div class="lg:col-span-5 flex flex-col gap-space-md">
+                    <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">L'Écosystème
+                        Fédéré</span>
+                    <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+                        Pourquoi CAMPAEXPO RDC est unique
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
+                        Nous ne sommes pas un simple concours : nous sommes l'infrastructure pérenne qui connecte la recherche
+                        académique congolaise aux exigences du marché international.
+                    </p>
+                    <div class="flex flex-col gap-space-sm pt-space-xs">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[22px] shrink-0 mt-0.5">verified</span>
+                            <div>
+                                <p class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Reconnaissance
+                                    Académique &amp; d'État</p>
+                                <p class="font-body-sm text-body-sm text-text-secondary">Intégré aux parcours universitaires de
+                                    l'ESU avec crédits de stage validés.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[22px] shrink-0 mt-0.5">finance_chip</span>
+                            <div>
+                                <p class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Accès Direct au Capital
+                                    Seed</p>
+                                <p class="font-body-sm text-body-sm text-text-secondary">Fonds de garantie et micro-subventions
+                                    non-dilutives pour les prototypes lauréats.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-brand-emerald-vibrant text-[22px] shrink-0 mt-0.5">public</span>
+                            <div>
+                                <p class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Rayonnement Panafricain
+                                </p>
+                                <p class="font-body-sm text-body-sm text-text-secondary">Passerelle vers les incubateurs d'Afrique
+                                    de l'Ouest, Centrale et d'Europe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Visual Mosaic Grid of Strategic Pillars -->
+                <div class="lg:col-span-7 grid grid-cols-2 gap-space-md">
+                    <div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-sm">
+                        <span class="material-symbols-outlined text-brand-emerald-dark text-[36px]">lan</span>
+                        <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Réseau
+                            Décentralisé</span>
+                        <p class="font-body-sm text-body-sm text-text-secondary">Des comités étudiants CDU opérationnels dans
+                            les 26 provinces pour ne laisser aucun talent à l'écart.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-sm">
+                        <span class="material-symbols-outlined text-brand-amber-flame text-[36px]">security</span>
+                        <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Propriété
+                            Intellectuelle</span>
+                        <p class="font-body-sm text-body-sm text-text-secondary">Dépôt de brevets et protection juridique
+                            systématique des prototypes avant toute exposition publique.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-sm">
+                        <span class="material-symbols-outlined text-status-info text-[36px]">psychology</span>
+                        <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Mentorat d'Élite</span>
+                        <p class="font-body-sm text-body-sm text-text-secondary">Accompagnateurs rigoureusement sélectionnés,
+                            engagés dans une charte de transmission active.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-sm">
+                        <span class="material-symbols-outlined text-brand-emerald-vibrant text-[36px]">payments</span>
+                        <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Bourses d'Amorçage</span>
+                        <p class="font-body-sm text-body-sm text-text-secondary">Fonds dédiés pour l'achat de composants
+                            techniques, tests de laboratoire et hébergement cloud.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Partenaires Institutionnels & Corporate Section -->
+            <div class="pt-space-xl flex flex-col gap-space-lg">
+                <div class="flex items-center justify-between">
+                    <span class="font-label-lg text-label-lg font-bold text-text-muted uppercase tracking-wider">Ils nous font
+                        confiance &amp; soutiennent la jeunesse</span>
+                    <a class="text-xs font-semibold text-primary hover:underline" data-path="mentors-partenaires" href="#">Devenir
+                        partenaire institutionnel →</a>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-space-md items-center">
+                    <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center font-bold text-text-secondary text-center text-xs tracking-wider uppercase hover:bg-surface-container transition-colors">
+                        Ministère ESU RDC
+                    </div>
+                    <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center font-bold text-text-secondary text-center text-xs tracking-wider uppercase hover:bg-surface-container transition-colors">
+                        UNIKIN Kinshasa
+                    </div>
+                    <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center font-bold text-text-secondary text-center text-xs tracking-wider uppercase hover:bg-surface-container transition-colors">
+                        UNILU Lubumbashi
+                    </div>
+                    <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center font-bold text-text-secondary text-center text-xs tracking-wider uppercase hover:bg-surface-container transition-colors">
+                        UNIGOM Goma
+                    </div>
+                    <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center font-bold text-text-secondary text-center text-xs tracking-wider uppercase hover:bg-surface-container transition-colors">
+                        Vodacom DRC Foundation
+                    </div>
+                    <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center font-bold text-text-secondary text-center text-xs tracking-wider uppercase hover:bg-surface-container transition-colors">
+                        Fonds Panafricain Seed
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. BANDEAU D'APPEL FINAL (Grand CTA Énergique) -->
+    <section class="w-full bg-brand-navy-deep text-on-primary py-space-xl lg:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-linear-to-r from-brand-emerald-dark/30 via-transparent to-brand-amber-flame/20 pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-gutter relative z-10 text-center flex flex-col items-center gap-space-lg">
+            <div class="w-16 h-16 rounded-full bg-brand-emerald-vibrant/20 flex items-center justify-center text-brand-emerald-vibrant mb-space-xs">
+                <span class="material-symbols-outlined text-[36px]">lightbulb</span>
+            </div>
+            <div class="flex flex-col gap-space-xs max-w-3xl">
+                <h2 class="font-headline-xl text-headline-xl lg:text-display-hero-mobile font-extrabold tracking-tight text-surface-container-lowest leading-tight">
+                    Ton idée peut devenir la prochaine grande entreprise congolaise.
+                </h2>
+                <p class="font-body-lg text-body-lg text-surface-container leading-relaxed">
+                    Que tu sois en licence, master ou jeune diplômé d'une université de la RDC : nos mentors, nos jurys et nos
+                    ressources t'attendent pour passer à l'action.
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-space-md pt-space-xs">
+                <a class="inline-flex items-center justify-center px-space-xl py-4 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg shadow-xl shadow-brand-emerald-vibrant/30 transition-all duration-200 gap-2 active:scale-95 text-base"
+                    data-path="soumettre-projet" href="#">
+                    <span class="material-symbols-outlined text-[22px]">rocket_launch</span>
+                    <span>Rejoindre CAMPAEXPO</span>
+                </a>
+                <a class="inline-flex items-center justify-center px-space-xl py-4 bg-surface-container-highest/10 hover:bg-surface-container-highest/20 text-on-primary font-label-lg text-label-lg font-semibold rounded-lg backdrop-blur-md transition-all duration-200 gap-2 text-base"
+                    data-path="cdu-comites" href="#">
+                    <span class="material-symbols-outlined text-[22px]">groups</span>
+                    <span>Rejoindre le comité CDU de mon université</span>
+                </a>
+            </div>
+            <p class="font-label-md text-label-md text-text-muted mt-space-sm">
+                Appel à projets officiel ouvert • Inscription 100% gratuite pour les étudiants réguliers de RDC.
+            </p>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
