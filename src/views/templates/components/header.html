@@ -2,76 +2,90 @@
    COMPOSANT : En-tête (header)
    --------------------------------------------------------------------------
    Inclus depuis base.html :  {% include "components/header.html" %}
-   Contient : le bandeau d'appel officiel + la barre de navigation fixe.
+   Contient : logo + nom « CAMPA EXPO » et les 5 liens de navigation
+   (Accueil, Programmes, Projets, Contact, À propos).
+   Barre « glass » fixe ; menu mobile repliable en CSS pur (checkbox + peer),
+   aucun JavaScript nécessaire.
    Statique pour le moment (liens "#" + attribut data-path).
    ========================================================================== #}
-<header class="fixed top-0 inset-x-0 z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="relative border-b border-border-subtle/70 bg-bg-surface/85 backdrop-blur-xl">
 
-  {# ---------- Bandeau d'annonce ---------- #}
-  <div class="bg-brand-navy-deep text-on-primary py-space-xs px-gutter">
-    <div class="max-w-7xl mx-auto flex items-center justify-between font-label-md text-label-md">
-      <div class="flex items-center gap-space-sm">
-        <span class="bg-brand-amber-flame text-on-primary px-space-sm py-0.5 rounded-full font-bold uppercase tracking-wider text-[10px]">Appel
-          Officiel</span>
-        <span class="hidden sm:inline font-medium text-surface-container-high">Édition CAMPAEXPO 2026
-          : Appel à projets ouvert à toutes les universités de RDC</span>
-        <span class="sm:hidden font-medium text-surface-container-high truncate max-w-[200px]">CAMPAEXPO 2026 : Appel
-          ouvert</span>
-      </div>
-      <a class="inline-flex items-center gap-1 text-primary-fixed hover:text-on-primary font-semibold transition-colors duration-150"
-        data-path="programmes" href="#">Participer<span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
-    </div>
-  </div>
+    {# Filet de marque : bleu → or → bleu profond #}
+    <span aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-brand-emerald-vibrant via-brand-amber-flame to-brand-navy-deep"></span>
 
-  {# ---------- Barre de navigation ---------- #}
-  <div class="bg-bg-surface/95 backdrop-blur-xl h-20">
-    <div class="max-w-7xl mx-auto h-full px-gutter flex items-center justify-between gap-space-md">
+    <div class="max-w-7xl mx-auto h-16 lg:h-20 px-gutter flex items-center justify-between gap-space-md">
 
-      {# Logo #}
-      <div class="flex items-center gap-space-md">
-        <a class="flex items-center gap-space-sm group" data-path="accueil" href="#">
-          <img alt="Logo CAMPAEXPO RDC" class="h-8 w-auto object-contain"
-            src="https://lh3.googleusercontent.com/aida/AEtjO1UIehih6H-eDTSV9vDwvXfEf3GqCZ9PYF6VLiR6oTZlv9kU84hVB7SBr9pw5YsjHykEPGS3l3027G-XVZCFJjJQz4SmQhtCraXBF0ve0dlLP9ezM27OEgNduo4MgzvI_8M40aWhYt-SNFszw4IW0_zgBIKFJF6cWWDCuLjT5bYZbWh95is1K2UJle6ZGAnyWsJcgAefb-ylaacuhrrGVieZByoixbv9ektrUbue9slslNhjFCJvkno9m6A" />
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm font-extrabold text-brand-navy-deep tracking-tight group-hover:text-primary transition-colors">CAMPAEXPO<span
-                class="text-brand-emerald-vibrant ml-0.5">RDC</span></span>
-            <span class="text-[10px] font-bold uppercase tracking-widest text-text-muted -mt-1">Écosystème
-              Universitaire</span>
-          </div>
-        </a>
-      </div>
+      {# Case à cocher invisible : ouvre / ferme le menu mobile (aucun JS) #}
+      <input aria-controls="menu-mobile-panel" aria-label="Navigation" class="peer sr-only" id="menu-mobile" type="checkbox" />
 
-      {# Navigation principale #}
-      <nav class="hidden xl:flex items-center gap-1 p-1 bg-surface-container-low rounded-xl">
+      {# ---------- Logo + nom ---------- #}
+      <a aria-label="CAMPA EXPO — Accueil" class="group flex shrink-0 items-center gap-space-sm" data-path="accueil"
+        href="{{ url_for('home.index') }}">
+        <span
+          class="grid h-10 w-10 lg:h-11 lg:w-11 place-items-center overflow-hidden rounded-xl lg:rounded-2xl shadow-sm ring-1 ring-brand-navy-deep/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-105 group-hover:shadow-md">
+          <img alt="" class="h-full w-full object-cover" src="{{ url_for('static', filename='images/logo.png') }}" />
+        </span>
+        <span class="font-headline-sm text-headline-sm font-extrabold tracking-tight text-brand-navy-deep">
+          CAMPA<span
+            class="ml-[0.3em] bg-linear-to-r from-brand-emerald-vibrant to-primary-container bg-clip-text text-transparent">EXPO</span>
+        </span>
+      </a>
+
+      {# ---------- Navigation desktop : liens générés depuis src/shared/navigation.py ---------- #}
+      <nav class="hidden items-center gap-0.5 rounded-full border border-border-subtle/70 bg-bg-canvas/60 p-1.5 lg:flex">
+        {% for lien in nav_liens %}
+        {% if lien.actif %}
+        {# Page courante : pastille dégradée + aria-current #}
         <a aria-current="page"
-          class="px-space-md py-space-xs transition-colors duration-150 bg-primary-container text-on-primary font-semibold rounded-lg shadow-sm"
-          data-path="accueil" href="#">Accueil</a>
-        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
-          data-path="a-propos" href="#">À propos</a>
-        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
-          data-path="programmes" href="#">Programmes</a>
-        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
-          data-path="projets-etudiants" href="#">Projets étudiants</a>
-        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
-          data-path="evenements" href="#">Événements</a>
-        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
-          data-path="mentors-partenaires" href="#">Mentors &amp; Partenaires</a>
-        <a class="px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg font-label-lg text-label-lg transition-colors duration-150"
-          data-path="cdu-comites" href="#">CDU</a>
+          class="inline-flex items-center rounded-full bg-linear-to-r from-brand-emerald-vibrant to-primary-container px-space-md py-2 font-label-lg text-label-lg font-semibold text-on-primary shadow-md shadow-primary/25 transition-transform duration-200 hover:-translate-y-0.5"
+          data-path="{{ lien.identifiant }}" href="{{ url_for(lien.endpoint) }}">{{ lien.libelle }}</a>
+        {% else %}
+        <a class="group relative inline-flex items-center rounded-full px-space-md py-2 font-label-lg text-label-lg font-semibold text-on-surface-variant transition-colors duration-200 hover:text-primary"
+          data-path="{{ lien.identifiant }}" href="{{ url_for(lien.endpoint) }}">
+          <span
+            class="pointer-events-none absolute inset-0 scale-90 rounded-full bg-bg-surface opacity-0 shadow-sm ring-1 ring-border-subtle/60 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"></span>
+          <span class="relative z-10">{{ lien.libelle }}</span>
+          <span
+            class="pointer-events-none absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-brand-amber-flame transition-all duration-300 group-hover:w-6"></span>
+        </a>
+        {% endif %}
+        {% endfor %}
       </nav>
 
-      {# Actions #}
-      <div class="flex items-center gap-space-sm">
-        <a class="hidden sm:inline-flex items-center justify-center px-space-md py-2.5 bg-brand-navy-deep hover:bg-brand-navy-surface text-on-secondary rounded-lg font-label-lg text-label-lg transition-all shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]"
-          data-path="connexion" href="#">Espace Étudiant</a>
-        <a class="inline-flex items-center justify-center px-space-md py-2.5 bg-primary-container hover:bg-brand-emerald-vibrant text-on-primary font-label-lg text-label-lg font-semibold rounded-lg shadow-sm hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.06)] active:scale-[0.98] transition-all gap-1.5"
-          data-path="soumettre-projet" href="#">
-          <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
-          <span>Soumettre un projet</span>
-        </a>
-        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-inner ml-1">
-          <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
-        </div>
+      {# ---------- Bouton menu (mobile) : deux libellés qui s'échangent ---------- #}
+      <label aria-label="Ouvrir le menu" for="menu-mobile"
+        class="inline-flex lg:hidden h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-border-subtle/80 bg-bg-canvas/70 text-brand-navy-deep transition-colors hover:bg-surface-container-high peer-focus-visible:ring-2 peer-focus-visible:ring-primary/60 max-lg:peer-checked:hidden">
+        <span class="material-symbols-outlined">menu</span>
+      </label>
+      <label aria-label="Fermer le menu" for="menu-mobile"
+        class="hidden lg:hidden h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-border-subtle/80 bg-bg-canvas/70 text-brand-navy-deep transition-colors hover:bg-surface-container-high peer-focus-visible:ring-2 peer-focus-visible:ring-primary/60 max-lg:peer-checked:inline-flex">
+        <span class="material-symbols-outlined">close</span>
+      </label>
+
+      {# ---------- Panneau de navigation mobile ---------- #}
+      <div
+        class="hidden absolute inset-x-0 top-full border-b border-border-subtle/70 bg-bg-surface/95 backdrop-blur-xl shadow-xl shadow-brand-navy-deep/5 max-lg:peer-checked:block"
+        id="menu-mobile-panel">
+        <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-gutter py-space-md">
+          {% for lien in nav_liens %}
+          {% if lien.actif %}
+          <a aria-current="page"
+            class="flex items-center gap-3 rounded-xl bg-linear-to-r from-brand-emerald-vibrant to-primary-container px-space-md py-3 font-label-lg text-label-lg font-semibold text-on-primary shadow-sm"
+            data-path="{{ lien.identifiant }}" href="{{ url_for(lien.endpoint) }}">
+            <span class="material-symbols-outlined text-[20px]">{{ lien.icone }}</span>
+            <span>{{ lien.libelle }}</span>
+          </a>
+          {% else %}
+          <a class="flex items-center gap-3 rounded-xl px-space-md py-3 font-label-lg text-label-lg font-semibold text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-primary"
+            data-path="{{ lien.identifiant }}" href="{{ url_for(lien.endpoint) }}">
+            <span class="material-symbols-outlined text-[20px] text-text-muted">{{ lien.icone }}</span>
+            <span>{{ lien.libelle }}</span>
+          </a>
+          {% endif %}
+          {% endfor %}
+        </nav>
       </div>
 
     </div>

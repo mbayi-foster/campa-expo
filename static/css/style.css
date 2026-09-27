@@ -120,84 +120,100 @@
   --spacing-margin: 2rem;
   --spacing-margin-mobile: 1rem;
 
-  /* ------------------------- Couleurs de marque ------------------------- */
-  --color-brand-navy-deep: #090d16;
-  --color-brand-navy-surface: #1e293b;
-  --color-brand-emerald-vibrant: #0a8f6a;
-  --color-brand-emerald-light: #e6f4ea;
-  --color-brand-emerald-dark: #064e3b;
-  --color-brand-amber-flame: #ff6b00;
-  --color-brand-amber-light: #fef3c7;
+  /* ------------------------- Couleurs de marque -------------------------
+     Palette officielle CAMPAEXPO RDC :
+       Bleu           #0088E8  visibilité, confiance, mouvement (primaire)
+       Bleu profond   #102A43  fonds institutionnels, titres, contraste
+       Or RDC         #F2B632  énergie, distinction, appel à l'action
+       Noir EXPO      #111820  contours, ombres, textes forts
+       Blanc support  #FFFFFF  respiration, lisibilité, fonds clairs
+       Gris brume     #F3F6F8  fonds secondaires et blocs d'information
 
-  --color-bg-canvas: #f8fafc;
-  --color-bg-surface: #ffffff;
+     Les noms de tokens historiques (navy / emerald / amber) sont conservés
+     afin de ne pas casser les classes déjà utilisées dans les templates.
+     ---------------------------------------------------------------------- */
+  --color-brand-navy-deep: #102a43; /* Bleu profond #102A43 */
+  --color-brand-navy-surface: #1a3a5c; /* Bleu profond — surface dérivée */
+  --color-brand-emerald-vibrant: #0088e8; /* Bleu primaire #0088E8 (CTA) */
+  --color-brand-emerald-light: #e6f2fc; /* Bleu primaire — fond léger */
+  --color-brand-emerald-dark: #102a43; /* Bleu profond #102A43 */
+  --color-brand-amber-flame: #f2b632; /* Or RDC #F2B632 (accent) */
+  --color-brand-amber-light: #fdf0d5; /* Or RDC — fond léger */
 
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #94a3b8;
+  --color-bg-canvas: #f3f6f8; /* Gris brume #F3F6F8 */
+  --color-bg-surface: #ffffff; /* Blanc support #FFFFFF */
 
-  --color-border-subtle: #e2e8f0;
-  --color-border-strong: #cbd5e1;
+  --color-text-primary: #111820; /* Noir EXPO #111820 */
+  --color-text-secondary: #4a5568; /* Noir EXPO dégradé */
+  --color-text-muted: #94a3b8; /* Gris brume dégradé */
+
+  --color-border-subtle: #e3e9ef; /* Gris brume — bordure */
+  --color-border-strong: #c9d4de; /* Noir EXPO 18 % */
 
   --color-status-success: #10b981;
   --color-status-warning: #f59e0b;
   --color-status-error: #ef4444;
   --color-status-info: #0284c7;
 
-  /* --------------------- Palette Material 3 (maquette) --------------------- */
-  --color-primary: #005f49;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #0d7a5f;
-  --color-on-primary-container: #a8ffdf;
-  --color-primary-fixed: #98f4d3;
-  --color-primary-fixed-dim: #7cd8b8;
-  --color-on-primary-fixed: #002117;
-  --color-on-primary-fixed-variant: #00513e;
-  --color-inverse-primary: #7cd8b8;
+  /* --------------------- Palette Material 3 (maquette) ---------------------
+     Déclinée depuis la charte : primaire = Bleu #0088E8, secondaire = Bleu
+     profond #102A43, tertiaire = Or RDC #F2B632.
+     ---------------------------------------------------------------------- */
+  --color-primary: #0088e8; /* Bleu #0088E8 */
+  --color-on-primary: #ffffff; /* Blanc support #FFFFFF */
+  --color-primary-container: #0069b4; /* Bleu profond (survol des CTA) */
+  --color-on-primary-container: #d6ecff;
+  --color-primary-fixed: #a5d8ff;
+  --color-primary-fixed-dim: #6fbfef;
+  --color-on-primary-fixed: #001b2e;
+  --color-on-primary-fixed-variant: #00496e;
+  --color-inverse-primary: #6fbfef;
 
-  --color-secondary: #565e74;
+  --color-secondary: #456173;
   --color-on-secondary: #ffffff;
-  --color-secondary-container: #dae2fd;
-  --color-on-secondary-container: #5c647a;
-  --color-secondary-fixed: #dae2fd;
-  --color-secondary-fixed-dim: #bec6e0;
-  --color-on-secondary-fixed: #131b2e;
-  --color-on-secondary-fixed-variant: #3f465c;
+  --color-secondary-container: #d3e5f2;
+  --color-on-secondary-container: #3d5566;
+  --color-secondary-fixed: #d3e5f2;
+  --color-secondary-fixed-dim: #b3cbdd;
+  --color-on-secondary-fixed: #0b1c30;
+  --color-on-secondary-fixed-variant: #33495a;
 
-  --color-tertiary: #764900;
+  --color-tertiary: #7a4f00; /* Or RDC assombri — texte sur fond clair */
   --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #975f00;
-  --color-on-tertiary-container: #ffead5;
-  --color-tertiary-fixed: #ffddb8;
-  --color-tertiary-fixed-dim: #ffb95f;
+  --color-tertiary-container: #6b4600;
+  --color-on-tertiary-container: #fff0d0;
+  --color-tertiary-fixed: #ffe3ad;
+  --color-tertiary-fixed-dim: #f2b632; /* Or RDC #F2B632 */
   --color-on-tertiary-fixed: #2a1700;
   --color-on-tertiary-fixed-variant: #653e00;
+
+  /* --- Surfaces : Blanc support #FFFFFF + Gris brume #F3F6F8 --- */
 
   --color-error: #ba1a1a;
   --color-on-error: #ffffff;
   --color-error-container: #ffdad6;
   --color-on-error-container: #93000a;
 
-  --color-background: #f8f9ff;
-  --color-on-background: #0b1c30;
-  --color-surface: #f8f9ff;
-  --color-on-surface: #0b1c30;
-  --color-surface-variant: #d3e4fe;
-  --color-on-surface-variant: #3e4944;
-  --color-surface-dim: #cbdbf5;
-  --color-surface-bright: #f8f9ff;
-  --color-surface-tint: #006c53;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #eff4ff;
-  --color-surface-container: #e5eeff;
-  --color-surface-container-high: #dce9ff;
-  --color-surface-container-highest: #d3e4fe;
+  --color-background: #f3f6f8; /* Gris brume #F3F6F8 */
+  --color-on-background: #111820; /* Noir EXPO #111820 */
+  --color-surface: #f3f6f8; /* Gris brume #F3F6F8 */
+  --color-on-surface: #111820; /* Noir EXPO #111820 */
+  --color-surface-variant: #e3e9ef;
+  --color-on-surface-variant: #454f5b;
+  --color-surface-dim: #dce3ea;
+  --color-surface-bright: #ffffff; /* Blanc support #FFFFFF */
+  --color-surface-tint: #0088e8; /* Bleu #0088E8 */
+  --color-surface-container-lowest: #ffffff; /* Blanc support #FFFFFF */
+  --color-surface-container-low: #f1f5f9;
+  --color-surface-container: #eef2f6;
+  --color-surface-container-high: #e4eaf0;
+  --color-surface-container-highest: #d9e2ea;
 
-  --color-inverse-surface: #213145;
-  --color-inverse-on-surface: #eaf1ff;
+  --color-inverse-surface: #102a43; /* Bleu profond #102A43 */
+  --color-inverse-on-surface: #f3f6f8; /* Gris brume #F3F6F8 */
 
-  --color-outline: #6e7a74;
-  --color-outline-variant: #bdc9c2;
+  --color-outline: #6b7a88;
+  --color-outline-variant: #c9d4de;
 }
 
 /* --------------------------------------------------------------------------

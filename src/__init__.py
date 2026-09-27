@@ -2,6 +2,7 @@
 
 Ce module assemble l'application :
     - configuration  ->  src/shared/config.py
+    - navigation     ->  src/shared/navigation.py
     - routes         ->  src/routes/
     - vues           ->  src/views/templates/
     - assets         ->  static/ (à la racine du projet)
@@ -9,9 +10,10 @@ Ce module assemble l'application :
 
 from pathlib import Path
 
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 
 from src.shared.config import DevelopmentConfig
+from src.shared.navigation import liens_avec_etat
 
 #: Chemin absolu vers le dossier "static" situé à la racine du projet.
 #: (les chemins relatifs seraient résolus depuis "src/", ce qui pointerait
@@ -30,6 +32,7 @@ def create_app(config_object: type = DevelopmentConfig) -> Flask:
     app.config.from_object(config_object)
 
     _register_blueprints(app)
+    _register_context_processors(app)
     _register_error_handlers(app)
 
     return app
@@ -37,9 +40,25 @@ def create_app(config_object: type = DevelopmentConfig) -> Flask:
 
 def _register_blueprints(app: Flask) -> None:
     """Enregistre tous les blueprints de l'application."""
+    from src.routes.a_propos_routes import a_propos_bp
+    from src.routes.contact_routes import contact_bp
     from src.routes.home_routes import home_bp
+    from src.routes.programmes_routes import programmes_bp
+    from src.routes.projets_routes import projets_bp
 
     app.register_blueprint(home_bp)
+    app.register_blueprint(programmes_bp)
+    app.register_blueprint(projets_bp)
+    app.register_blueprint(contact_bp)
+    app.register_blueprint(a_propos_bp)
+
+
+def _register_context_processors(app: Flask) -> None:
+    """Expose la navigation principale (et son lien actif) à tous les gabarits."""
+
+    @app.context_processor
+    def injecter_navigation() -> dict:
+        return {"nav_liens": liens_avec_etat(request)}
 
 
 def _register_error_handlers(app: Flask) -> None:

@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+{% from "components/ui_macros.html" import page_hero, section_header, badge, icone_carre, cta_band %}
+
+{% block title %}Nous contacter — {{ app_name }}{% endblock %}
+
+{% set style_champ = 'w-full rounded-lg border bg-surface-container-lowest px-space-md py-2.5 font-body-sm text-body-sm text-on-surface placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary-container transition-shadow' %}
+
+{% block content %}
+{% set actions_hero = [
+  {'libelle': 'Écrire un message', 'icone': 'edit_note', 'url': '#formulaire'},
+  {'libelle': 'WhatsApp direct', 'icone': 'chat', 'url': identite.whatsapp_lien, 'style': 'secondaire'}
+] %}
+{{ page_hero(
+  surtitre='Contact & assistance',
+  titre='Parlons de votre projet, de votre partenariat ou de votre mentorat',
+  accroche="Une équipe permanente à Kinshasa, des antennes provinciales et une réponse garantie sous 48 heures ouvrées.",
+  description="Candidatures, partenariats, presse, mentorat ou installation d'un comité CDU dans votre université : choisissez le canal qui vous convient, nous vous orientons vers le bon interlocuteur.",
+  tags=tags_hero,
+  actions=actions_hero,
+  fil='Contact'
+) }}
+
+<!-- Messages de confirmation / erreur des formulaires -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="w-full bg-bg-canvas pt-space-lg">
+  <div class="max-w-7xl mx-auto px-gutter flex flex-col gap-space-sm">
+    {% for categorie, message in messages %}
+    <div
+      class="flex items-start gap-space-sm rounded-xl p-space-md shadow-sm {% if categorie == 'error' %}bg-error-container text-on-error-container{% else %}bg-brand-emerald-light text-brand-emerald-dark{% endif %}"
+      role="{{ 'alert' if categorie == 'error' else 'status' }}">
+      <span class="material-symbols-outlined text-[20px]">{{ 'error' if categorie == 'error' else 'check_circle' }}</span>
+      <p class="font-body-sm text-body-sm font-semibold">{{ message }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endwith %}
+
+<!-- 1. CANAUX DE CONTACT -->
+<section class="w-full bg-bg-surface py-space-xl">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ section_header(
+      surtitre='Canaux officiels',
+      titre='Quatre façons de nous joindre',
+      description="Tous les échanges passent par les canaux officiels ci-dessous : méfiez-vous des intermédiaires qui demanderaient un paiement."
+    ) }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+      <!-- WhatsApp -->
+      <a class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+        href="{{ identite.whatsapp_lien }}" rel="noopener" target="_blank">
+        {{ icone_carre('bleu', 'chat', 'lg') }}
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">WhatsApp officiel</h3>
+        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">Assistance rapide pour les candidats et
+          les porteurs de projets.</p>
+        <span class="mt-auto font-label-lg text-label-lg font-bold text-brand-emerald-vibrant">{{ identite.whatsapp }}</span>
+        <span class="inline-flex items-center gap-1 font-label-md text-label-md text-text-muted">
+          <span class="material-symbols-outlined text-[16px]">schedule</span>
+          <span>Lun → Sam · 08h00 — 18h00</span>
+        </span>
+      </a>
+
+      <!-- Téléphone -->
+      <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm hover:shadow-lg transition-all duration-300">
+        {{ icone_carre('profond', 'call', 'lg') }}
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Téléphone</h3>
+        <ul class="flex flex-col gap-1">
+          {% for ligne in identite.telephones %}
+          <li class="flex flex-col">
+            <span class="font-label-md text-label-md text-text-muted">{{ ligne.libelle }}</span>
+            <a class="font-body-sm text-body-sm font-semibold text-brand-navy-deep hover:text-brand-emerald-vibrant transition-colors"
+              href="tel:{{ ligne.numero|replace(' ', '') }}">{{ ligne.numero }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Emails -->
+      <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm hover:shadow-lg transition-all duration-300">
+        {{ icone_carre('or', 'mail', 'lg') }}
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Adresses email</h3>
+        <ul class="flex flex-col gap-space-xs">
+          {% for contact in identite.emails %}
+          <li class="flex flex-col">
+            <a class="font-body-sm text-body-sm font-semibold text-brand-navy-deep hover:text-brand-emerald-vibrant transition-colors break-all"
+              href="mailto:{{ contact.adresse }}">{{ contact.adresse }}</a>
+            <span class="font-label-md text-label-md text-text-muted">{{ contact.objet }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Adresse -->
+      <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm hover:shadow-lg transition-all duration-300">
+        {{ icone_carre('info', 'location_on', 'lg') }}
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Siège national</h3>
+        <p class="font-body-sm text-body-sm text-brand-navy-deep font-semibold leading-relaxed">{{ identite.adresse }}</p>
+        <p class="font-body-sm text-body-sm text-text-secondary">{{ identite.ville }}</p>
+        <div class="mt-auto flex flex-col gap-1 pt-space-sm border-t border-border-subtle">
+          <span class="inline-flex items-start gap-1 font-label-md text-label-md text-text-muted">
+            <span class="material-symbols-outlined text-[16px]">schedule</span>
+            <span>{{ identite.horaires }}<br />{{ identite.horaires_samedi }}</span>
+          </span>
+          <span class="font-label-md text-label-md text-text-muted">{{ identite.repere }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FORMULAIRE DE CONTACT -->
+<section class="w-full py-space-xl lg:py-24 bg-bg-canvas scroll-mt-24" id="formulaire">
+  <div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+    <!-- Formulaire -->
+    <div class="lg:col-span-7">
+      <div class="bg-bg-surface rounded-xl shadow-sm p-space-xl flex flex-col gap-space-lg">
+        <div class="flex flex-col gap-space-xs">
+          <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Écrivez-nous</span>
+          <h2 class="font-headline-lg text-headline-lg font-extrabold text-brand-navy-deep tracking-tight">Formulaire de
+            contact</h2>
+          <p class="font-body-sm text-body-sm text-text-secondary">Les champs marqués d'un astérisque (*) sont
+            obligatoires. Réponse sous 48 heures ouvrées.</p>
+        </div>
+
+        <form action="{{ url_for('contact.index') }}" class="flex flex-col gap-space-md" method="post">
+          <input name="formulaire" type="hidden" value="contact" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-lg text-label-lg font-semibold text-brand-navy-deep" for="nom">Nom complet *</label>
+              <input class="{{ style_champ }} {% if erreurs.nom %}border-error{% else %}border-border-subtle{% endif %}"
+                id="nom" name="nom" placeholder="Ex. Amina Kabongo" required type="text"
+                value="{{ formulaire.get('nom', '') }}" />
+              {% if erreurs.nom %}<p class="font-label-md text-label-md font-semibold text-error">{{ erreurs.nom }}</p>{% endif %}
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="font-label-lg text-label-lg font-semibold text-brand-navy-deep" for="email">Email *</label>
+              <input class="{{ style_champ }} {% if erreurs.email %}border-error{% else %}border-border-subtle{% endif %}"
+                id="email" name="email" placeholder="prenom.nom@universite.cd" required type="email"
+                value="{{ formulaire.get('email', '') }}" />
+              {% if erreurs.email %}<p class="font-label-md text-label-md font-semibold text-error">{{ erreurs.email }}</p>{% endif %}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-lg text-label-lg font-semibold text-brand-navy-deep" for="telephone">Téléphone /
+                WhatsApp</label>
+              <input class="{{ style_champ }} border-border-subtle" id="telephone" name="telephone"
+                placeholder="+243 ..." type="tel" value="{{ formulaire.get('telephone', '') }}" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="font-label-lg text-label-lg font-semibold text-brand-navy-deep" for="sujet">Sujet *</label>
+              <select class="{{ style_champ }} {% if erreurs.sujet %}border-error{% else %}border-border-subtle{% endif %}"
+                id="sujet" name="sujet" required>
+                <option value="">Choisir un sujet…</option>
+                {% for sujet in sujets %}
+                <option value="{{ sujet }}" {% if formulaire.get('sujet') == sujet %}selected{% endif %}>{{ sujet }}</option>
+                {% endfor %}
+              </select>
+              {% if erreurs.sujet %}<p class="font-label-md text-label-md font-semibold text-error">{{ erreurs.sujet }}</p>{% endif %}
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-lg text-label-lg font-semibold text-brand-navy-deep" for="message">Votre message *</label>
+            <textarea class="{{ style_champ }} min-h-40 resize-y {% if erreurs.message %}border-error{% else %}border-border-subtle{% endif %}"
+              id="message" name="message" placeholder="Décrivez votre projet, votre demande ou votre question (20 caractères minimum)."
+              required rows="6">{{ formulaire.get('message', '') }}</textarea>
+            {% if erreurs.message %}<p class="font-label-md text-label-md font-semibold text-error">{{ erreurs.message }}</p>{% endif %}
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+            <p class="flex items-start gap-2 font-label-md text-label-md text-text-muted max-w-sm">
+              <span class="material-symbols-outlined text-[16px] text-brand-emerald-vibrant">shield_lock</span>
+              <span>Vos informations restent confidentielles et ne sont jamais transmises à des tiers.</span>
+            </p>
+            <button
+              class="inline-flex items-center justify-center gap-2 px-space-xl py-3.5 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg shadow-lg shadow-brand-emerald-vibrant/25 transition-all duration-200 active:scale-95"
+              type="submit">
+              <span class="material-symbols-outlined text-[20px]">send</span>
+              <span>Envoyer le message</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Colonne latérale : raccourcis et antennes -->
+    <aside class="lg:col-span-5 flex flex-col gap-space-lg">
+      <div class="bg-brand-navy-deep text-on-primary rounded-xl p-space-xl flex flex-col gap-space-md">
+        <span class="font-label-lg text-label-lg font-bold text-brand-amber-flame uppercase tracking-wider">Besoin d'une
+          réponse immédiate ?</span>
+        <p class="font-body-md text-body-md text-surface-container leading-relaxed">
+          Le service WhatsApp traite en priorité les demandes urgentes : problème d'inscription, pièce manquante d'un
+          dossier déposé ou accompagnement d'une équipe en compétition.
+        </p>
+        <a class="inline-flex items-center justify-center gap-2 px-space-lg py-3 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg transition-colors"
+          href="{{ identite.whatsapp_lien }}" rel="noopener" target="_blank">
+          <span class="material-symbols-outlined text-[20px]">chat</span>
+          <span>Ouvrir WhatsApp</span>
+        </a>
+        <ul class="flex flex-col gap-space-xs pt-space-xs border-t border-brand-navy-surface">
+          {% for contact in identite.emails[:2] %}
+          <li class="flex items-center gap-2 font-label-md text-label-md text-surface-container-high">
+            <span class="material-symbols-outlined text-[16px] text-primary-fixed">mail</span>
+            <a class="hover:text-on-primary transition-colors break-all" href="mailto:{{ contact.adresse }}">{{ contact.adresse }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="bg-bg-surface rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+        <div class="flex items-center justify-between gap-space-sm">
+          <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Antennes provinciales</h3>
+          {{ badge('bleu', antennes|length ~ ' antennes') }}
+        </div>
+        <ul class="flex flex-col gap-space-sm">
+          {% for antenne in antennes %}
+          <li class="flex flex-col gap-1 pb-space-sm border-b border-border-subtle last:border-0 last:pb-0">
+            <div class="flex items-center justify-between gap-space-sm">
+              <span class="font-label-lg text-label-lg font-bold text-brand-navy-deep">{{ antenne.ville }}</span>
+              <span class="font-label-md text-label-md text-text-muted">{{ antenne.province }}</span>
+            </div>
+            <span class="font-label-md text-label-md text-text-secondary">{{ antenne.responsable }}</span>
+            <div class="flex flex-wrap items-center gap-space-md">
+              <a class="inline-flex items-center gap-1 font-label-md text-label-md font-semibold text-brand-emerald-vibrant hover:text-brand-emerald-dark transition-colors"
+                href="tel:{{ antenne.telephone|replace(' ', '') }}">
+                <span class="material-symbols-outlined text-[16px]">call</span>
+                <span>{{ antenne.telephone }}</span>
+              </a>
+              <a class="inline-flex items-center gap-1 font-label-md text-label-md font-semibold text-brand-emerald-vibrant hover:text-brand-emerald-dark transition-colors break-all"
+                href="mailto:{{ antenne.email }}">
+                <span class="material-symbols-outlined text-[16px]">mail</span>
+                <span>{{ antenne.email }}</span>
+              </a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 3. RÉSEAUX SOCIAUX -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ section_header(
+      surtitre='Communauté en ligne',
+      titre='Suivez CAMPAEXPO sur les réseaux officiels',
+      description="Annonces d'appels à candidatures, coulisses des cohortes, portraits de lauréats et masterclasses en replay.",
+      align='center'
+    ) }}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+      {% for reseau in reseaux_sociaux %}
+      <a class="group bg-surface-container-low rounded-xl p-space-lg flex items-start gap-space-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+        href="{{ reseau.lien }}" rel="noopener" target="_blank">
+        {{ icone_carre(reseau.tonalite, reseau.icone, 'md') }}
+        <div class="flex flex-col gap-1">
+          <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep group-hover:text-brand-emerald-vibrant transition-colors">
+            {{ reseau.nom }}
+          </h3>
+          <span class="font-label-lg text-label-lg font-semibold text-brand-emerald-vibrant">{{ reseau.identifiant }}</span>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ reseau.detail }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 4. NEWSLETTER -->
+<section class="w-full py-space-xl lg:py-24 bg-bg-canvas scroll-mt-24" id="newsletter">
+  <div class="max-w-7xl mx-auto px-gutter">
+    <div class="relative overflow-hidden bg-brand-navy-deep text-on-primary rounded-xl p-space-xl lg:p-space-xl">
+      <div class="absolute -top-24 -right-16 w-80 h-80 bg-brand-emerald-vibrant/20 rounded-full blur-3xl pointer-events-none">
+      </div>
+      <div class="absolute -bottom-24 -left-16 w-80 h-80 bg-brand-amber-flame/15 rounded-full blur-3xl pointer-events-none">
+      </div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+        <div class="lg:col-span-6 flex flex-col gap-space-md">
+          <span class="inline-flex items-center gap-2 w-fit px-space-md py-1.5 rounded-full bg-surface-container-highest/10 backdrop-blur-md font-label-md text-label-md uppercase tracking-wider text-primary-fixed">
+            <span class="material-symbols-outlined text-[16px]">mark_email_unread</span>
+            <span>Newsletter officielle</span>
+          </span>
+          <h2 class="font-headline-xl text-headline-xl font-extrabold tracking-tight text-surface-container-lowest leading-tight">
+            Recevez les appels à projets en avant-première
+          </h2>
+          <p class="font-body-md text-body-md text-surface-container leading-relaxed">
+            Une lettre par mois : ouvertures de cohortes, dates des hackathons, subventions disponibles et portraits de
+            lauréats. Aucune publicité, désinscription en un clic.
+          </p>
+          <ul class="flex flex-wrap gap-space-md font-label-md text-label-md text-text-muted">
+            <li class="inline-flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-brand-emerald-vibrant">check_circle</span>
+              <span>1 email par mois</span>
+            </li>
+            <li class="inline-flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-brand-emerald-vibrant">check_circle</span>
+              <span>Données protégées</span>
+            </li>
+            <li class="inline-flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-brand-emerald-vibrant">check_circle</span>
+              <span>Désinscription immédiate</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-6">
+          <form action="{{ url_for('contact.newsletter') }}" class="flex flex-col gap-space-sm" method="post">
+            <div class="flex flex-col sm:flex-row gap-space-sm">
+              <label class="sr-only" for="email_newsletter">Adresse email</label>
+              <input
+                class="flex-1 rounded-lg bg-brand-navy-surface text-on-primary placeholder:text-text-muted px-space-md py-3 font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-brand-emerald-vibrant"
+                id="email_newsletter" name="email_newsletter" placeholder="votre.email@universite.cd" required type="email" />
+              <button
+                class="inline-flex items-center justify-center gap-2 px-space-lg py-3 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg transition-colors"
+                type="submit">
+                <span class="material-symbols-outlined text-[20px]">send</span>
+                <span>S'inscrire</span>
+              </button>
+            </div>
+            <p class="font-label-md text-label-md text-text-muted">
+              En vous inscrivant, vous acceptez de recevoir les communications officielles de CAMPAEXPO RDC.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. QUESTIONS FRÉQUENTES -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+  <div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+    <div class="lg:col-span-4 flex flex-col gap-space-md">
+      <span class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Avant de nous
+        écrire</span>
+      <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+        Les réponses aux demandes les plus fréquentes
+      </h2>
+      <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+        Gagnez du temps : ces trois situations représentent la majorité des messages reçus chaque semaine.
+      </p>
+      <div class="flex flex-wrap gap-space-sm">
+        <a class="inline-flex items-center gap-2 px-space-md py-2.5 bg-surface-container-low text-brand-navy-deep font-label-lg text-label-lg font-semibold rounded-lg hover:shadow-md transition-all"
+          href="{{ url_for('programmes.index') }}">
+          <span class="material-symbols-outlined text-[18px]">grid_view</span>
+          <span>Voir les programmes</span>
+        </a>
+        <a class="inline-flex items-center gap-2 px-space-md py-2.5 bg-surface-container-low text-brand-navy-deep font-label-lg text-label-lg font-semibold rounded-lg hover:shadow-md transition-all"
+          href="{{ url_for('a_propos.index') }}">
+          <span class="material-symbols-outlined text-[18px]">account_balance</span>
+          <span>Le bureau principal</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-8 flex flex-col gap-space-sm">
+      {% for item in faq %}
+      <details class="group bg-surface-container-low rounded-xl px-space-lg py-space-md transition-all open:shadow-md">
+        <summary class="flex items-center justify-between gap-space-md cursor-pointer list-none">
+          <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ item.question }}</span>
+          <span
+            class="material-symbols-outlined text-[24px] text-brand-emerald-vibrant transition-transform duration-300 group-open:rotate-45">add</span>
+        </summary>
+        <p class="mt-space-sm font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ item.reponse }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ cta_band(
+  titre="Une question ? Une idée ? Une envie de nous rejoindre ?",
+  texte="Que vous soyez étudiant, enseignant, entreprise ou institution, il y a une place pour vous dans l'écosystème CAMPAEXPO RDC.",
+  actions=[
+    {'libelle': 'Devenir mentor ou partenaire', 'icone': 'handshake', 'url': '#formulaire'},
+    {'libelle': 'En savoir plus sur nous', 'icone': 'account_balance', 'url': url_for('a_propos.index'), 'style': 'secondaire'}
+  ],
+  note="Secrétariat permanent ouvert du lundi au vendredi · 08h30 — 17h00 (heure de Kinshasa).",
+  icone='support_agent'
+) }}
+{% endblock %}

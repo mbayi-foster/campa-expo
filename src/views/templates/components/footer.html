@@ -15,7 +15,7 @@
       <div class="lg:col-span-4 flex flex-col gap-space-md">
         <div class="flex items-center gap-space-sm">
           <img alt="Logo CAMPAEXPO RDC" class="h-9 w-auto brightness-0 invert object-contain"
-            src="https://lh3.googleusercontent.com/aida/AEtjO1UIehih6H-eDTSV9vDwvXfEf3GqCZ9PYF6VLiR6oTZlv9kU84hVB7SBr9pw5YsjHykEPGS3l3027G-XVZCFJjJQz4SmQhtCraXBF0ve0dlLP9ezM27OEgNduo4MgzvI_8M40aWhYt-SNFszw4IW0_zgBIKFJF6cWWDCuLjT5bYZbWh95is1K2UJle6ZGAnyWsJcgAefb-ylaacuhrrGVieZByoixbv9ektrUbue9slslNhjFCJvkno9m6A" />
+           src="{{ url_for('static', filename='images/logo.png') }}" />
           <div class="flex flex-col">
             <span class="font-headline-sm text-headline-sm font-extrabold text-on-primary tracking-tight">CAMPAEXPO<span
                 class="text-brand-emerald-vibrant ml-0.5">RDC</span></span>
@@ -48,15 +48,15 @@
         <span class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-primary">Programmes</span>
         <ul class="flex flex-col gap-2">
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
-              href="#">Incubation Campus</a></li>
+              href="{{ url_for('programmes.index') }}#incubation-universitaire">Incubation Campus</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
-              href="#">Mentorat Panafricain</a></li>
+              href="{{ url_for('programmes.index') }}#coaching-mentoring">Mentorat Panafricain</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
-              href="#">Bootcamps &amp; Formations</a></li>
+              href="{{ url_for('programmes.index') }}#formations-bootcamps">Bootcamps &amp; Formations</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
-              href="#">Grande Exposition Annuelle</a></li>
+              href="{{ url_for('programmes.index') }}#grande-exposition">Grande Exposition Annuelle</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="programmes"
-              href="#">Bourses d'Amorçage Seed</a></li>
+              href="{{ url_for('programmes.index') }}#incubation-universitaire">Bourses d'Amorçage Seed</a></li>
         </ul>
       </div>
 
@@ -66,17 +66,17 @@
           Province</span>
         <ul class="flex flex-col gap-2">
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
-              href="#">Antenne Kinshasa</a></li>
+              href="{{ url_for('programmes.index') }}#mobilisation-universitaire">Antenne Kinshasa</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
-              href="#">Antenne Haut-Katanga</a></li>
+              href="{{ url_for('programmes.index') }}#mobilisation-universitaire">Antenne Haut-Katanga</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
-              href="#">Antenne Kongo-Central</a></li>
+              href="{{ url_for('programmes.index') }}#mobilisation-universitaire">Antenne Kongo-Central</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
-              href="#">Antenne Nord-Kivu</a></li>
+              href="{{ url_for('programmes.index') }}#mobilisation-universitaire">Antenne Nord-Kivu</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
-              href="#">Antenne Kasaï-Central</a></li>
+              href="{{ url_for('programmes.index') }}#mobilisation-universitaire">Antenne Kasaï-Central</a></li>
           <li role="none"><a class="text-text-muted hover:text-on-primary transition-colors" data-path="cdu-comites"
-              href="#">Rejoindre un comité</a></li>
+              href="{{ url_for('contact.index') }}#formulaire">Rejoindre un comité</a></li>
         </ul>
       </div>
 
@@ -87,18 +87,20 @@
         <p class="text-text-muted leading-relaxed">Recevez les appels à projets, les masterclasses de mentors et les
           subventions pour startups universitaires.</p>
 
-        <div class="flex flex-col gap-space-xs">
+        <form action="{{ url_for('contact.newsletter') }}" class="flex flex-col gap-space-xs" method="post">
           <div class="flex items-center gap-2">
+            <label class="sr-only" for="newsletter-pied-de-page">Adresse email</label>
             <input
               class="flex-1 bg-brand-navy-surface text-on-primary placeholder:text-text-muted px-space-md py-2.5 rounded-lg text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container"
-              placeholder="votre.email@universite.cd" type="email" />
+              id="newsletter-pied-de-page" name="email_newsletter" placeholder="votre.email@universite.cd" required
+              type="email" />
             <button
-              class="bg-brand-emerald-vibrant hover:bg-primary text-on-primary px-space-md py-2.5 rounded-lg font-label-lg text-label-lg font-semibold transition-colors"
-              type="button">S'inscrire</button>
+              class="bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary px-space-md py-2.5 rounded-lg font-label-lg text-label-lg font-semibold transition-colors"
+              type="submit">S'inscrire</button>
           </div>
           <span class="text-[12px] text-text-muted">Protection des données garantie par la charte d'éthique
             CAMPAEXPO.</span>
-        </div>
+        </form>
 
         <div class="mt-space-xs">
           <span class="block text-xs font-semibold text-text-muted mb-2 uppercase tracking-wider">Partenaires
@@ -116,12 +118,17 @@
     {# ---------- Barre inférieure ---------- #}
     <div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md text-text-muted text-xs">
       <p>© 2026 CAMPAEXPO RDC. Plateforme Nationale de l'Entrepreneuriat Étudiant. Tous droits réservés.</p>
-      <div class="flex items-center gap-space-md">
-        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Mentions légales</a>
-        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Politique de
-          confidentialité</a>
-        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Charte d'incubation</a>
-        <a class="hover:text-on-primary transition-colors" data-path="a-propos" href="#">Contact Kinshasa</a>
+      <div class="flex flex-wrap items-center justify-center gap-space-md">
+        <a class="hover:text-on-primary transition-colors" data-path="projets-etudiants"
+          href="{{ url_for('projets.index') }}">Tous les projets</a>
+        <a class="hover:text-on-primary transition-colors" data-path="contact"
+          href="{{ url_for('contact.index') }}">Contact Kinshasa</a>
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos"
+          href="{{ url_for('a_propos.index') }}">Mentions légales</a>
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos"
+          href="{{ url_for('a_propos.index') }}">Charte d'incubation</a>
+        <a class="hover:text-on-primary transition-colors" data-path="a-propos"
+          href="{{ url_for('a_propos.index') }}">Politique de confidentialité</a>
       </div>
     </div>
 

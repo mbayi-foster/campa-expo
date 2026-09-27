@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+{% from "components/ui_macros.html" import page_hero, section_header, stats_grid, badge, icone_carre, avatar,
+cta_band %}
+
+{% block title %}À propos — {{ app_name }}{% endblock %}
+
+{# Carte de présentation d'un membre du bureau principal #}
+{% macro carte_membre(membre) %}
+<article class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+  <div class="flex items-center gap-space-md">
+    {{ avatar(membre.tonalite, membre.initiales, 'lg') }}
+    <div class="flex flex-col gap-1">
+      <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ membre.nom }}</h3>
+      <p class="font-body-sm text-body-sm font-bold text-brand-emerald-vibrant">{{ membre.fonction }}</p>
+      <span class="font-label-md text-label-md text-text-muted">{{ membre.parcours }}</span>
+    </div>
+  </div>
+  <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ membre.bio }}</p>
+  <div class="mt-auto pt-space-sm border-t border-border-subtle flex items-center justify-between gap-space-sm">
+    {{ badge(membre.tonalite, membre.entite) }}
+    <a class="inline-flex items-center gap-1 font-label-md text-label-md font-semibold text-brand-navy-deep hover:text-brand-emerald-vibrant transition-colors"
+      href="mailto:{{ membre.email }}">
+      <span class="material-symbols-outlined text-[16px]">mail</span>
+      <span>Écrire</span>
+    </a>
+  </div>
+</article>
+{% endmacro %}
+
+{% block content %}
+{% set actions_hero = [
+  {'libelle': 'Voir les programmes', 'icone': 'grid_view', 'url': url_for('programmes.index')},
+  {'libelle': 'Nous contacter', 'icone': 'mail', 'url': url_for('contact.index'), 'style': 'secondaire'}
+] %}
+{{ page_hero(
+  surtitre='Qui sommes-nous',
+  titre="L'infrastructure de l'entrepreneuriat étudiant congolais",
+  accroche="Née en 2019 sur un campus de Kinshasa, la plateforme relie aujourd'hui 28 universités, 85 mentors et 26 provinces.",
+  description="CAMPAEXPO RDC n'est pas un simple concours : c'est un dispositif permanent de détection, de structuration, de financement et d'exposition des projets étudiants, conduit avec les établissements d'enseignement supérieur et les acteurs privés du pays.",
+  tags=tags_hero,
+  actions=actions_hero,
+  fil='À propos'
+) }}
+
+<!-- 1. MISSION & VISION -->
+<section class="w-full bg-bg-surface py-space-xl">
+  <div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-stretch">
+    <div class="lg:col-span-7 flex flex-col gap-space-lg">
+      <div class="bg-surface-container-low rounded-xl p-space-xl flex flex-col gap-space-sm border-l-4 border-brand-emerald-vibrant">
+        <span class="inline-flex items-center gap-2 font-label-lg text-label-lg font-bold uppercase tracking-wider text-brand-emerald-vibrant">
+          <span class="material-symbols-outlined text-[20px]">flag</span>
+          <span>Notre mission</span>
+        </span>
+        <p class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep leading-snug">{{ identite.mission }}</p>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-space-xl flex flex-col gap-space-sm border-l-4 border-brand-amber-flame">
+        <span class="inline-flex items-center gap-2 font-label-lg text-label-lg font-bold uppercase tracking-wider text-brand-amber-flame">
+          <span class="material-symbols-outlined text-[20px]">visibility</span>
+          <span>Notre vision</span>
+        </span>
+        <p class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep leading-snug">{{ identite.vision }}</p>
+      </div>
+
+      <p class="font-body-md text-body-md text-text-secondary leading-relaxed">{{ identite.statut }}</p>
+    </div>
+
+    <div class="lg:col-span-5">
+      <div class="h-full bg-brand-navy-deep text-on-primary rounded-xl p-space-xl flex flex-col justify-between gap-space-lg relative overflow-hidden">
+        <div class="absolute -top-20 -right-16 w-72 h-72 bg-brand-emerald-vibrant/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col gap-space-md">
+          <span class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-primary-fixed">Notre signature</span>
+          <p class="font-headline-lg text-headline-lg font-extrabold leading-snug text-surface-container-lowest">
+            « {{ identite.baseline }} »
+          </p>
+          <div class="relative pl-space-md">
+            <div class="absolute left-0 top-1 bottom-1 w-1 bg-brand-amber-flame rounded-full"></div>
+            <p class="font-body-md text-body-md text-text-muted italic">
+              Réveiller le potentiel entrepreneurial de l'étudiant congolais.
+            </p>
+          </div>
+        </div>
+        <ul class="relative z-10 flex flex-col gap-space-sm pt-space-md border-t border-brand-navy-surface">
+          <li class="flex items-center gap-2 font-label-md text-label-md text-surface-container-high">
+            <span class="material-symbols-outlined text-[18px] text-brand-emerald-vibrant">verified</span>
+            <span>Programme national officiel d'appui à l'entrepreneuriat estudiantin</span>
+          </li>
+          <li class="flex items-center gap-2 font-label-md text-label-md text-surface-container-high">
+            <span class="material-symbols-outlined text-[18px] text-brand-amber-flame">account_balance</span>
+            <span>Conventions signées avec le Ministère de l'ESU et 28 universités</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CHIFFRES CLÉS -->
+<section class="w-full py-space-xl bg-bg-canvas">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ section_header(
+      surtitre='Impact mesuré',
+      titre="L'écosystème en chiffres",
+      description='Indicateurs consolidés depuis la première édition nationale du programme.'
+    ) }}
+    {{ stats_grid(chiffres, colonnes=5) }}
+  </div>
+</section>
+
+<!-- 3. NOS VALEURS -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ section_header(
+      surtitre='Nos valeurs',
+      titre='Six principes qui encadrent chaque décision',
+      description="De la sélection des projets à la signature des partenariats, ces principes sont opposables et vérifiés.",
+      align='center'
+    ) }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+      {% for valeur in valeurs %}
+      <article class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm hover:shadow-md transition-all duration-300">
+        {{ icone_carre(valeur.tonalite, valeur.icone, 'md') }}
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ valeur.nom }}</h3>
+        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ valeur.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 4. NOTRE HISTOIRE -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+  <div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+    <div class="lg:col-span-4 flex flex-col gap-space-md">
+      <span class="font-label-lg text-label-lg font-bold text-brand-amber-flame uppercase tracking-wider">Notre histoire</span>
+      <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+        D'un amphithéâtre de Kinshasa à tout le pays
+      </h2>
+      <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+        Sept années de construction patiente, portées par des étudiants, des enseignants et des entrepreneurs qui ont
+        cru avant tout le monde au potentiel des campus congolais.
+      </p>
+    </div>
+
+    <ol class="lg:col-span-8 flex flex-col">
+      {% for etape in histoire %}
+      <li class="flex gap-space-md">
+        <div class="flex flex-col items-center shrink-0">
+          <span class="w-3 h-3 rounded-full bg-brand-amber-flame ring-4 ring-bg-canvas mt-1.5"></span>
+          {% if not loop.last %}
+          <span class="w-px flex-1 bg-border-strong"></span>
+          {% endif %}
+        </div>
+        <div class="flex flex-col gap-1 pb-space-lg">
+          <span class="inline-flex w-fit items-center px-2 py-0.5 rounded bg-brand-emerald-light text-brand-emerald-dark font-label-md text-label-md font-extrabold">{{ etape.annee }}</span>
+          <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ etape.titre }}</h3>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ etape.description }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- 5. LE BUREAU PRINCIPAL -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-surface scroll-mt-24" id="bureau">
+  <div class="max-w-7xl mx-auto px-gutter">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md">
+      {{ section_header(
+        surtitre='Bureau principal',
+        titre='Les femmes et les hommes qui pilotent le programme',
+        description="Le siège national de Kinshasa réunit un bureau exécutif, quatre directions thématiques et un secrétariat permanent au service des étudiants."
+      ) }}
+      <div class="flex flex-wrap gap-space-sm mb-space-xl">
+        {{ badge('bleu', bureau_executif|length ~ ' membres du bureau exécutif') }}
+        {{ badge('or', directions|length ~ ' directions nationales') }}
+        {{ badge('info', '1 secrétariat permanent') }}
+      </div>
+    </div>
+
+    <!-- Bureau exécutif national -->
+    <div class="flex flex-col gap-space-md mb-space-xl">
+      <div class="flex items-center gap-space-sm">
+        <span class="material-symbols-outlined text-[24px] text-brand-emerald-vibrant">account_balance</span>
+        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Bureau Exécutif National</h3>
+        <span class="h-px flex-1 bg-border-subtle"></span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+        {% for membre in bureau_executif %}
+        {{ carte_membre(membre) }}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Directions nationales -->
+    <div class="flex flex-col gap-space-md mb-space-xl">
+      <div class="flex items-center gap-space-sm">
+        <span class="material-symbols-outlined text-[24px] text-brand-amber-flame">hub</span>
+        <h3 class="font-headline-md text-headline-md font-bold text-brand-navy-deep">Directions nationales</h3>
+        <span class="h-px flex-1 bg-border-subtle"></span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+        {% for membre in directions %}
+        {{ carte_membre(membre) }}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Secrétariat permanent -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+      <div class="lg:col-span-7 bg-brand-navy-deep text-on-primary rounded-xl p-space-xl flex flex-col gap-space-md relative overflow-hidden">
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 bg-brand-emerald-vibrant/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col gap-space-md">
+          <span class="inline-flex items-center gap-2 w-fit px-space-md py-1.5 rounded-full bg-surface-container-highest/10 backdrop-blur-md font-label-md text-label-md uppercase tracking-wider text-primary-fixed">
+            <span class="material-symbols-outlined text-[16px]">support_agent</span>
+            <span>Secrétariat permanent</span>
+          </span>
+          <h3 class="font-headline-lg text-headline-lg font-extrabold tracking-tight text-surface-container-lowest leading-tight">
+            Le point de contact unique pour les étudiants
+          </h3>
+          <p class="font-body-md text-body-md text-surface-container leading-relaxed">
+            Installé au siège de Kinshasa, le secrétariat assure l'accueil, la réception des dossiers et la logistique
+            des événements nationaux tout au long de l'année académique.
+          </p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs">
+            {% for service in secretariat.services %}
+            <li class="flex items-start gap-2 font-label-md text-label-md text-surface-container-high">
+              <span class="material-symbols-outlined text-[16px] text-brand-emerald-vibrant shrink-0 mt-0.5">check_circle</span>
+              <span>{{ service }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 bg-surface-container-low rounded-xl p-space-xl flex flex-col gap-space-md">
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">Nous rendre visite</h3>
+        <ul class="flex flex-col gap-space-md">
+          <li class="flex items-start gap-space-sm">
+            <span class="material-symbols-outlined text-[22px] text-brand-emerald-vibrant shrink-0">location_on</span>
+            <div>
+              <p class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Adresse du siège</p>
+              <p class="font-body-sm text-body-sm font-semibold text-brand-navy-deep">{{ secretariat.adresse }}</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-space-sm">
+            <span class="material-symbols-outlined text-[22px] text-brand-emerald-vibrant shrink-0">schedule</span>
+            <div>
+              <p class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Horaires d'accueil</p>
+              <p class="font-body-sm text-body-sm font-semibold text-brand-navy-deep">{{ secretariat.horaires }}</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-space-sm">
+            <span class="material-symbols-outlined text-[22px] text-brand-emerald-vibrant shrink-0">mail</span>
+            <div>
+              <p class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Email</p>
+              <a class="font-body-sm text-body-sm font-semibold text-brand-navy-deep hover:text-brand-emerald-vibrant transition-colors break-all"
+                href="mailto:{{ secretariat.email }}">{{ secretariat.email }}</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-space-sm">
+            <span class="material-symbols-outlined text-[22px] text-brand-emerald-vibrant shrink-0">call</span>
+            <div>
+              <p class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Téléphone</p>
+              <a class="font-body-sm text-body-sm font-semibold text-brand-navy-deep hover:text-brand-emerald-vibrant transition-colors"
+                href="tel:{{ secretariat.telephone|replace(' ', '') }}">{{ secretariat.telephone }}</a>
+            </div>
+          </li>
+        </ul>
+        <a class="mt-auto inline-flex items-center justify-center gap-2 px-space-lg py-3 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg transition-colors"
+          href="{{ url_for('contact.index') }}">
+          <span class="material-symbols-outlined text-[20px]">edit_note</span>
+          <span>Écrire au secrétariat</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. GOUVERNANCE & TRANSPARENCE -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ section_header(
+      surtitre='Gouvernance & transparence',
+      titre='Des règles écrites, contrôlées et publiées',
+      description="La confiance des étudiants, des universités et des partenaires repose sur des engagements vérifiables."
+    ) }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+      {% for regle in gouvernance %}
+      <article class="bg-bg-surface rounded-xl p-space-lg flex flex-col gap-space-sm shadow-sm hover:shadow-md transition-all duration-300">
+        {{ icone_carre(regle.tonalite, regle.icone, 'md') }}
+        <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ regle.titre }}</h3>
+        <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ regle.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 7. PARTENAIRES -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ section_header(
+      surtitre='Ils nous accompagnent',
+      titre='Partenaires institutionnels et corporate',
+      description="Universités, ministères, fondations et fonds d'investissement qui financent, hébergent et certifient le programme.",
+      align='center'
+    ) }}
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-space-md items-stretch">
+      {% for partenaire in partenaires %}
+      <div class="bg-surface-container-low py-space-md px-space-sm rounded-lg flex items-center justify-center text-center font-bold text-text-secondary text-xs tracking-wider uppercase hover:bg-surface-container hover:text-brand-navy-deep transition-colors">
+        {{ partenaire }}
+      </div>
+      {% endfor %}
+    </div>
+
+    <p class="mt-space-lg text-center font-body-sm text-body-sm text-text-secondary">
+      Vous représentez une institution, une entreprise ou un fonds ?
+      <a class="font-bold text-primary hover:underline" href="{{ url_for('contact.index') }}#formulaire">Devenez
+        partenaire officiel →</a>
+    </p>
+  </div>
+</section>
+
+{{ cta_band(
+  titre="Rejoignez l'équipe qui construit la prochaine génération d'entreprises congolaises.",
+  texte="Mentors expérimentés, enseignants-chercheurs, entreprises et investisseurs : le bureau principal recrute en continu des expertises pour accompagner les cohortes.",
+  actions=[
+    {'libelle': 'Devenir mentor ou partenaire', 'icone': 'handshake', 'url': url_for('contact.index') ~ '#formulaire'},
+    {'libelle': 'Découvrir les projets validés', 'icone': 'folder_special', 'url': url_for('projets.index'), 'style': 'secondaire'}
+  ],
+  note='Charte d’éthique signée par tous les encadrants · Aucun frais n’est demandé aux étudiants.',
+  icone='groups'
+) }}
+{% endblock %}

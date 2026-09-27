@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% from "components/ui_macros.html" import page_hero, section_header, stats_grid, badge, badge_sombre, icone_carre,
+cta_band %}
+
+{% block title %}Projets étudiants validés — {{ app_name }}{% endblock %}
+
+{% block content %}
+{% set actions_hero = [
+  {'libelle': 'Soumettre mon projet', 'icone': 'rocket_launch', 'url': url_for('contact.index') ~ '#formulaire'},
+  {'libelle': 'Découvrir les programmes', 'icone': 'grid_view', 'url': url_for('programmes.index'), 'style': 'secondaire'}
+] %}
+{{ page_hero(
+  surtitre='Catalogue national',
+  titre='Les projets étudiants validés par le comité scientifique',
+  accroche="Des prototypes testés en conditions réelles, portés par des étudiants de 26 provinces.",
+  description="Chaque fiche ci-dessous a franchi les quatre étapes de validation : dépôt en ligne, revue scientifique, audition du jury et admission en programme d'incubation. Les projets sont classés par secteur d'activité.",
+  tags=tags_hero,
+  actions=actions_hero,
+  fil='Projets'
+) }}
+
+<!-- 1. CHIFFRES CLÉS -->
+<section class="w-full bg-bg-surface py-space-xl relative z-20 shadow-sm">
+  <div class="max-w-7xl mx-auto px-gutter">
+    {{ stats_grid(chiffres, colonnes=4) }}
+  </div>
+</section>
+
+<!-- 2. CATALOGUE DES PROJETS -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-canvas">
+  <div class="max-w-7xl mx-auto px-gutter">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md">
+      {{ section_header(
+        surtitre='Projets validés',
+        titre="Innovations d'étudiants congolais",
+        description='Filtrez le catalogue par secteur pour découvrir les solutions déjà validées.'
+      ) }}
+      <div class="flex flex-col items-start md:items-end gap-1 mb-space-xl">
+        <span class="font-headline-sm text-headline-sm font-extrabold text-brand-navy-deep">{{ nombre_affiche }}
+          projet{{ 's' if nombre_affiche > 1 }}</span>
+        <span class="font-label-md text-label-md text-text-muted">sur {{ nombre_total }} projets du catalogue</span>
+      </div>
+    </div>
+
+    <!-- Filtres par secteur -->
+    <nav aria-label="Filtrer par secteur" class="flex flex-wrap items-center gap-space-sm mb-space-xl">
+      {% for secteur in secteurs %}
+      <a class="inline-flex items-center gap-2 px-space-md py-2 rounded-lg font-label-lg text-label-lg font-semibold transition-all {% if secteur == secteur_actif %}bg-brand-emerald-vibrant text-on-primary shadow-md shadow-brand-emerald-vibrant/25{% else %}bg-bg-surface text-on-surface-variant hover:text-primary shadow-sm hover:shadow-md{% endif %}"
+        aria-current="{{ 'page' if secteur == secteur_actif else 'false' }}"
+        href="{{ url_for('projets.index') if secteur == 'Tous' else url_for('projets.index', secteur=secteur) }}">
+        <span>{{ secteur }}</span>
+        {% if secteur == secteur_actif %}
+        <span class="material-symbols-outlined text-[16px]">filter_alt</span>
+        {% endif %}
+      </a>
+      {% endfor %}
+      {% if secteur_actif != 'Tous' %}
+      <a class="inline-flex items-center gap-1 font-label-md text-label-md font-semibold text-text-muted hover:text-brand-navy-deep transition-colors"
+        href="{{ url_for('projets.index') }}">
+        <span class="material-symbols-outlined text-[16px]">close</span>
+        <span>Réinitialiser</span>
+      </a>
+      {% endif %}
+    </nav>
+
+    <!-- Grille des projets -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+      {% for projet in projets %}
+      <article
+        class="bg-bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+        <!-- Visuel généré : dégradé de marque + icône du secteur -->
+        <div
+          class="relative w-full h-40 overflow-hidden {% if projet.tonalite == 'or' %}bg-linear-to-br from-brand-amber-flame/30 via-surface-container-high to-brand-navy-deep{% elif projet.tonalite == 'profond' %}bg-linear-to-br from-brand-navy-deep via-brand-navy-surface to-brand-emerald-dark{% elif projet.tonalite == 'info' %}bg-linear-to-br from-status-info/25 via-surface-container-high to-brand-navy-deep{% else %}bg-linear-to-br from-brand-emerald-vibrant/30 via-surface-container-high to-brand-navy-deep{% endif %}">
+          <span
+            class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-[76px] text-bg-surface/70 group-hover:scale-110 transition-transform duration-500">{{
+            projet.icone }}</span>
+          <div class="absolute top-space-sm left-space-sm">
+            {{ badge(projet.tonalite, projet.secteur) }}
+          </div>
+          <div class="absolute top-space-sm right-space-sm">
+            {{ badge_sombre(projet.province) }}
+          </div>
+          <div class="absolute bottom-space-sm left-space-sm">
+            <span
+              class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-bg-surface/90 backdrop-blur-sm text-brand-navy-deep font-label-md text-label-md font-bold">
+              <span class="material-symbols-outlined text-[14px] text-brand-emerald-vibrant">verified</span>
+              <span>{{ projet.statut }}</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="p-space-lg flex-1 flex flex-col gap-space-md">
+          <div class="flex flex-col gap-space-xs">
+            <h3
+              class="font-headline-md text-headline-md font-bold text-brand-navy-deep group-hover:text-brand-emerald-vibrant transition-colors">
+              {{ projet.nom }}
+            </h3>
+            <p class="inline-flex items-center gap-1 font-label-md text-label-md text-text-muted">
+              <span class="material-symbols-outlined text-[16px]">school</span>
+              <span>{{ projet.universite }}</span>
+            </p>
+            <p class="inline-flex items-center gap-1 font-label-md text-label-md text-text-muted">
+              <span class="material-symbols-outlined text-[16px]">person</span>
+              <span>Porteur : {{ projet.porteur }}</span>
+            </p>
+          </div>
+
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed line-clamp-3">{{ projet.description }}
+          </p>
+
+          <ul class="flex flex-wrap gap-space-xs">
+            {% for indicateur in projet.impact %}
+            <li
+              class="inline-flex items-center gap-1 px-2 py-1 rounded bg-surface-container-low font-label-md text-[11px] font-semibold text-text-secondary">
+              <span class="material-symbols-outlined text-[13px] text-brand-emerald-vibrant">trending_up</span>
+              <span>{{ indicateur }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <div class="mt-auto pt-space-md border-t border-border-subtle flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between font-label-md text-label-md">
+              <span class="inline-flex items-center gap-1 text-text-secondary">
+                <span class="material-symbols-outlined text-[16px] text-brand-amber-flame">payments</span>
+                <span>{{ projet.financement }}</span>
+              </span>
+              <span class="inline-flex items-center gap-1 text-text-muted">
+                <span class="material-symbols-outlined text-[16px]">event_available</span>
+                <span>{{ projet.date_validation }}</span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between gap-space-sm">
+              <span class="inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-text-secondary">
+                <span class="w-2 h-2 rounded-full bg-brand-emerald-vibrant"></span>
+                <span>{{ projet.phase }}</span>
+              </span>
+              <a class="inline-flex items-center gap-1 font-label-lg text-label-lg font-bold text-primary hover:text-brand-emerald-vibrant transition-colors"
+                href="{{ url_for('contact.index') }}#formulaire">
+                <span>Contacter l'équipe</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+      {% else %}
+      <p class="col-span-full bg-bg-surface p-space-xl rounded-xl text-center font-body-md text-body-md text-text-secondary">
+        Aucun projet validé dans ce secteur pour le moment.
+        <a class="font-semibold text-primary hover:underline" href="{{ url_for('projets.index') }}">Voir tout le
+          catalogue</a>.
+      </p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 3. COMMENT UN PROJET EST VALIDÉ -->
+<section class="w-full py-space-xl lg:py-28 bg-bg-surface">
+  <div class="max-w-7xl mx-auto px-gutter">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+      <div class="lg:col-span-4 flex flex-col gap-space-md">
+        <span
+          class="font-label-lg text-label-lg font-bold text-brand-emerald-vibrant uppercase tracking-wider">Processus de
+          sélection</span>
+        <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">
+          Comment un projet est validé
+        </h2>
+        <p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Un jury mixte composé d'académiques, d'industriels et d'investisseurs applique la même grille d'évaluation à
+          toutes les candidatures, province par province.
+        </p>
+        <div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm">
+          <p class="font-label-md text-label-md font-bold uppercase tracking-wider text-text-muted">Critères de fond
+            évalués</p>
+          <ul class="flex flex-col gap-space-xs">
+            {% for critere in criteres_fond %}
+            <li class="flex items-start gap-2 font-body-sm text-body-sm text-text-secondary">
+              <span class="material-symbols-outlined text-[18px] text-brand-amber-flame shrink-0">task_alt</span>
+              <span>{{ critere }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+        {% for critere in criteres %}
+        <div
+          class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-sm hover:shadow-md transition-all">
+          <div class="flex items-center justify-between">
+            {{ icone_carre(critere.tonalite, critere.icone) }}
+            <span class="font-stat-counter text-headline-lg font-extrabold text-surface-dim">{{ critere.numero }}</span>
+          </div>
+          <h3 class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ critere.titre }}</h3>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">{{ critere.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ cta_band(
+  titre="Votre projet sera peut-être le prochain du catalogue.",
+  texte="Le comité scientifique examine les dossiers en continu. Déposez votre note d'intention : vous recevez une réponse sous 48 heures ouvrées et un accompagnement, même en cas de refus.",
+  actions=[
+    {'libelle': 'Déposer mon dossier', 'icone': 'upload_file', 'url': url_for('contact.index') ~ '#formulaire'},
+    {'libelle': 'Voir les programmes', 'icone': 'grid_view', 'url': url_for('programmes.index'), 'style': 'secondaire'}
+  ],
+  note="Confidentialité garantie par la charte d'éthique CAMPAEXPO · Dépôt 100 % gratuit.",
+  icone='folder_special'
+) }}
+{% endblock %}

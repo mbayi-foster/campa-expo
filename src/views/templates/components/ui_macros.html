@@ -1,0 +1,219 @@
+{# ==========================================================================
+   MACROS DE GABARIT PARTAGÉES
+   --------------------------------------------------------------------------
+   Utilisation dans une page :
+     {% from "components/ui_macros.html" import page_hero, section_header,
+                                               stats_grid, badge, icone_carre,
+                                               cta_band %}
+   Ces macros reprennent le langage visuel de la page d'accueil (bandeaux
+   sombres institutionnels, cartes douces, pastilles bleu/or).
+   ========================================================================== #}
+
+{# ------------------------------ Tons de couleur ------------------------------ #}
+{# Fonds doux + texte fort (badges, pastilles d'information) #}
+{% set tons_douces = {
+  'bleu': 'bg-brand-emerald-light text-brand-emerald-dark',
+  'or': 'bg-brand-amber-light text-on-tertiary-fixed-variant',
+  'profond': 'bg-surface-container-high text-brand-navy-deep',
+  'info': 'bg-surface-container-high text-status-info'
+} %}
+
+{# Fonds pleins + texte clair (pastilles d'icônes sur fond blanc) #}
+{% set tons_pleins = {
+  'bleu': 'bg-brand-emerald-vibrant text-on-primary',
+  'or': 'bg-brand-amber-flame text-brand-navy-deep',
+  'profond': 'bg-brand-navy-deep text-on-primary',
+  'info': 'bg-status-info text-on-primary'
+} %}
+
+{# Couleur de texte seule (chiffres clés, icônes discrètes) #}
+{% set tons_texte = {
+  'bleu': 'text-brand-emerald-vibrant',
+  'or': 'text-brand-amber-flame',
+  'profond': 'text-brand-navy-deep',
+  'info': 'text-status-info'
+} %}
+
+{# -------------------------------- Composants -------------------------------- #}
+
+{# Pastille d'information (secteur, phase, format d'événement…) #}
+{% macro badge(tonalite, texte) %}
+<span
+  class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full font-label-md text-label-md font-bold {{ tons_douces.get(tonalite, tons_douces['bleu']) }}">{{ texte }}</span>
+{% endmacro %}
+
+{# Pastille d'information posée sur une photo ou un fond sombre #}
+{% macro badge_sombre(texte) %}
+<span
+  class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-brand-navy-deep/80 backdrop-blur-sm text-on-primary font-label-md text-label-md font-semibold">{{ texte }}</span>
+{% endmacro %}
+
+{# Carré d'icône arrondi #}
+{% macro icone_carre(tonalite, icone, taille='md') %}
+{% if taille == 'sm' %}
+{% set classes = 'w-10 h-10 rounded-lg text-[22px]' %}
+{% elif taille == 'lg' %}
+{% set classes = 'w-14 h-14 rounded-xl text-[32px]' %}
+{% else %}
+{% set classes = 'w-12 h-12 rounded-lg text-[28px]' %}
+{% endif %}
+<span class="flex items-center justify-center shrink-0 {{ classes }} {{ tons_douces.get(tonalite, tons_douces['bleu']) }}">
+  <span class="material-symbols-outlined">{{ icone }}</span>
+</span>
+{% endmacro %}
+
+{# Avatar circulaire à initiales (bureau, directions, témoignages) #}
+{% macro avatar(tonalite, initiales, taille='md') %}
+{% if taille == 'lg' %}
+{% set classes = 'w-20 h-20 text-headline-md' %}
+{% else %}
+{% set classes = 'w-16 h-16 text-headline-sm' %}
+{% endif %}
+<span
+  class="grid place-items-center rounded-full font-extrabold shrink-0 shadow-md {{ classes }} {{ tons_pleins.get(tonalite, tons_pleins['bleu']) }}">{{
+  initiales }}</span>
+{% endmacro %}
+
+{# En-tête de section (surtitre, titre, chapeau) #}
+{% macro section_header(surtitre, titre, description='', align='left', surtitre_tonalite='bleu') %}
+<div
+  class="flex flex-col gap-space-xs mb-space-xl {% if align == 'center' %}items-center text-center max-w-3xl mx-auto{% else %}max-w-2xl{% endif %}">
+  <span
+    class="font-label-lg text-label-lg font-bold uppercase tracking-wider {{ tons_texte.get(surtitre_tonalite, tons_texte['bleu']) }}">{{ surtitre }}</span>
+  <h2 class="font-headline-xl text-headline-xl font-extrabold text-brand-navy-deep tracking-tight">{{ titre }}</h2>
+  {% if description %}
+  <p class="font-body-lg text-body-lg text-text-secondary">{{ description }}</p>
+  {% endif %}
+</div>
+{% endmacro %}
+
+{# Bandeau d'en-tête de page interne #}
+{% macro page_hero(surtitre, titre, accroche, description='', tags=[], actions=[], fil='') %}
+<section class="relative overflow-hidden bg-brand-navy-deep text-on-primary">
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-emerald-vibrant/20 rounded-full blur-3xl pointer-events-none">
+  </div>
+  <div class="absolute top-1/3 right-0 w-105 h-105 bg-brand-amber-flame/15 rounded-full blur-3xl pointer-events-none">
+  </div>
+  <div class="max-w-7xl mx-auto px-gutter py-space-xl lg:py-24 relative z-10 flex flex-col gap-space-md">
+    {# Fil d'Ariane #}
+    <nav aria-label="Fil d'Ariane"
+      class="flex flex-wrap items-center gap-space-xs font-label-md text-label-md text-text-muted">
+      <a class="inline-flex items-center gap-1 hover:text-on-primary transition-colors" href="{{ url_for('home.index') }}">
+        <span class="material-symbols-outlined text-[16px]">home</span>
+        <span>Accueil</span>
+      </a>
+      <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+      <span class="text-primary-fixed font-semibold" aria-current="page">{{ fil or titre }}</span>
+    </nav>
+
+    {# Surtitre #}
+    <div class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-highest/10 w-fit backdrop-blur-md">
+      <span class="w-2.5 h-2.5 rounded-full bg-brand-emerald-vibrant animate-pulse"></span>
+      <span class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed">{{ surtitre }}</span>
+    </div>
+
+    <div class="flex flex-col gap-space-sm max-w-3xl">
+      <h1 class="font-headline-xl text-headline-xl lg:text-display-hero-mobile font-extrabold tracking-tight text-surface-container-lowest leading-tight">
+        {{ titre }}
+      </h1>
+      <div class="relative pl-space-md">
+        <div class="absolute left-0 top-1 bottom-1 w-1 bg-brand-amber-flame rounded-full"></div>
+        <p class="font-headline-sm text-headline-sm font-bold text-surface-container-highest leading-snug">{{ accroche }}
+        </p>
+      </div>
+      {% if description %}
+      <p class="font-body-md text-body-md text-surface-container leading-relaxed">{{ description }}</p>
+      {% endif %}
+    </div>
+
+    {% if tags %}
+    <ul class="flex flex-wrap items-center gap-space-sm font-label-md text-label-md text-text-muted">
+      {% for tag in tags %}
+      <li class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-highest/10">
+        <span class="material-symbols-outlined text-[16px] text-primary-fixed">check_circle</span>
+        <span>{{ tag }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if actions %}
+    <div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+      {% for action in actions %}
+      {% if action.style == 'secondaire' %}
+      <a class="inline-flex items-center justify-center px-space-xl py-3.5 bg-surface-container-highest/10 hover:bg-surface-container-highest/20 text-on-primary font-label-lg text-label-lg font-semibold rounded-lg backdrop-blur-md transition-all duration-200 gap-2"
+        href="{{ action.url }}">
+        <span class="material-symbols-outlined text-[20px]">{{ action.icone }}</span>
+        <span>{{ action.libelle }}</span>
+      </a>
+      {% else %}
+      <a class="inline-flex items-center justify-center px-space-xl py-3.5 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg shadow-lg shadow-brand-emerald-vibrant/25 transition-all duration-200 gap-2 active:scale-95"
+        href="{{ action.url }}">
+        <span class="material-symbols-outlined text-[20px]">{{ action.icone }}</span>
+        <span>{{ action.libelle }}</span>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endmacro %}
+
+{# Grille de chiffres clés #}
+{% macro stats_grid(items, colonnes=5) %}
+{% set classes_grille = {'3': 'lg:grid-cols-3', '4': 'lg:grid-cols-4', '5': 'lg:grid-cols-5', '6': 'lg:grid-cols-6'} %}
+<div class="grid grid-cols-2 md:grid-cols-3 {{ classes_grille.get(colonnes|string, 'lg:grid-cols-5') }} gap-space-md lg:gap-space-lg">
+  {% for item in items %}
+  <div class="flex flex-col p-space-lg rounded-xl bg-surface-container-low transition-all duration-200 hover:shadow-md">
+    <div class="flex items-center justify-between mb-space-xs">
+      <span class="font-stat-counter text-stat-counter tracking-tight {{ tons_texte.get(item.tonalite, tons_texte['bleu']) }}">{{
+        item.valeur }}</span>
+      <span
+        class="material-symbols-outlined text-[24px] {{ tons_texte.get(item.tonalite, tons_texte['bleu']) }}">{{ item.icone }}</span>
+    </div>
+    <span class="font-headline-sm text-headline-sm font-bold text-brand-navy-deep">{{ item.libelle }}</span>
+    <span class="font-body-sm text-body-sm text-text-secondary mt-1">{{ item.detail }}</span>
+  </div>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# Bandeau d'appel à l'action final #}
+{% macro cta_band(titre, texte, actions=[], note='', icone='lightbulb') %}
+<section class="w-full bg-brand-navy-deep text-on-primary py-space-xl lg:py-24 relative overflow-hidden">
+  <div class="absolute inset-0 bg-linear-to-r from-brand-emerald-dark/30 via-transparent to-brand-amber-flame/20 pointer-events-none">
+  </div>
+  <div class="max-w-5xl mx-auto px-gutter relative z-10 text-center flex flex-col items-center gap-space-lg">
+    <div class="w-16 h-16 rounded-full bg-brand-emerald-vibrant/20 flex items-center justify-center text-brand-emerald-vibrant">
+      <span class="material-symbols-outlined text-[36px]">{{ icone }}</span>
+    </div>
+    <h2 class="font-headline-xl text-headline-xl font-extrabold tracking-tight text-surface-container-lowest leading-tight max-w-3xl">
+      {{ titre }}
+    </h2>
+    <p class="font-body-lg text-body-lg text-surface-container leading-relaxed max-w-3xl">{{ texte }}</p>
+    {% if actions %}
+    <div class="flex flex-wrap items-center justify-center gap-space-md pt-space-xs">
+      {% for action in actions %}
+      {% if action.style == 'secondaire' %}
+      <a class="inline-flex items-center justify-center px-space-xl py-4 bg-surface-container-highest/10 hover:bg-surface-container-highest/20 text-on-primary font-label-lg text-label-lg font-semibold rounded-lg backdrop-blur-md transition-all duration-200 gap-2 text-base"
+        href="{{ action.url }}">
+        <span class="material-symbols-outlined text-[22px]">{{ action.icone }}</span>
+        <span>{{ action.libelle }}</span>
+      </a>
+      {% else %}
+      <a class="inline-flex items-center justify-center px-space-xl py-4 bg-brand-emerald-vibrant hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold rounded-lg shadow-xl shadow-brand-emerald-vibrant/30 transition-all duration-200 gap-2 active:scale-95 text-base"
+        href="{{ action.url }}">
+        <span class="material-symbols-outlined text-[22px]">{{ action.icone }}</span>
+        <span>{{ action.libelle }}</span>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if note %}
+    <p class="font-label-md text-label-md text-text-muted mt-space-sm">{{ note }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endmacro %}

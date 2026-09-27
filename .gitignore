@@ -87,13 +87,31 @@ yarn-error.log*
 *.manifest
 *.spec
 
+# ---------- Fichiers personnels / artefacts locaux ----------
+# Configurations de shell et d'outils créées automatiquement à la racine.
+# Elles dépendent de la machine (ou du sandbox) : jamais versionnées.
+.bashrc
+.bash_profile
+.bash_login
+.bash_logout
+.zshrc
+.zprofile
+.zlogin
+.zlogout
+.profile
+.inputrc
+.ripgreprc
+.gitconfig
+.mcp.json
+# .gitmodules est normalement ajouté par git pour les sous-modules :
+# retirez cette ligne si vous utilisez des sous-modules.
+.gitmodules
+
 # ---------- Éditeurs / IDE ----------
-.vscode/*
-!.vscode/settings.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/tasks.json
-.idea/
+# (sans "/" final : ces entrées existent tantôt en fichier, tantôt en dossier)
+.idea
+.vscode
+.claude/
 *.iml
 *.ipr
 *.iws
@@ -105,7 +123,13 @@ yarn-error.log*
 .pydevproject
 .spyderproject
 .spyproject
-.claude/
+# Pour versionner une config VS Code partagée, remplacez la ligne ".vscode"
+# ci-dessus par :
+#   .vscode/*
+#   !.vscode/settings.json
+#   !.vscode/launch.json
+#   !.vscode/extensions.json
+#   !.vscode/tasks.json
 
 # ---------- Système d'exploitation ----------
 .DS_Store
