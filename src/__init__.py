@@ -45,12 +45,14 @@ def _register_blueprints(app: Flask) -> None:
     from src.routes.home_routes import home_bp
     from src.routes.programmes_routes import programmes_bp
     from src.routes.projets_routes import projets_bp
+    from src.routes.admin_routes import admin_bp
 
     app.register_blueprint(home_bp)
     app.register_blueprint(programmes_bp)
     app.register_blueprint(projets_bp)
     app.register_blueprint(contact_bp)
     app.register_blueprint(a_propos_bp)
+    app.register_blueprint(admin_bp)  # Blueprint de l'administration
 
 
 def _register_context_processors(app: Flask) -> None:
